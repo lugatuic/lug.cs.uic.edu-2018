@@ -5,8 +5,8 @@
     @input="$emit('input', $event)"
     enable-resize-watcher
     fixed app>
-    <v-container fluid class="pl-0 pr-0">
-      <v-layout row class="site-logo">
+    <v-container fluid class="pl-0 pr-0 pt-0">
+      <v-layout row class="site-logo pt-3 pb-3">
         <v-flex class="text-xs-center">
           <img :src="require('@/assets/whiteTux.png')" class="mr-1"/>
           <h1 class="title">LUG@UIC</h1>
@@ -14,11 +14,7 @@
       </v-layout>
       <v-layout row>
         <v-flex>
-          <v-divider class="mt-2"/>
-        </v-flex>
-      </v-layout>
-      <v-layout row>
-        <v-flex>
+          <!-- list of site links -->
           <v-list>
             <template v-for="(item, i) in pages">
               <v-list-tile v-if="item.to" :key="i" :to="item.to">
@@ -91,9 +87,11 @@ export default {
 
 <style lang="scss">
 .site-logo {
-  .layout {
-    align-items: center;
-  }
+  background-color: black;
+  // same box shadow as v-toolbar
+  -webkit-box-shadow: 0 2px 4px -1px rgba(0,0,0,.2), 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12);
+  box-shadow: 0 2px 4px -1px rgba(0,0,0,.2), 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12);
+
   img {
     height: 30px;
     vertical-align: middle;
