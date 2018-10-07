@@ -1,20 +1,25 @@
 <template>
   <v-toolbar
     app :clipped-left="false">
-    <v-toolbar-side-icon @click="$emit('sidemenu-button-click')"/>
+    <v-toolbar-side-icon v-if="$vuetify.breakpoint.mdAndDown" @click="$emit('sidemenu-button-click')"/>
     <v-toolbar-title v-text="title"/>
     <v-spacer/>
     <v-btn flat outline>
-      <v-icon>person_add</v-icon>
+      <v-icon class="mr-1">person_add</v-icon>
       <span>Sign Up</span>
     </v-btn>
     <v-btn icon>
       <v-icon>fab fa-slack</v-icon>
     </v-btn>
+    <v-btn icon @click="toggleLightTheme()">
+      <v-icon>invert_colors</v-icon>
+    </v-btn>
   </v-toolbar>
 </template>
 
 <script>
+import { mapMutations } from 'vuex';
+
 export default {
   props: {
     title: {
@@ -22,9 +27,8 @@ export default {
       default: '',
     },
   },
+  methods: {
+    ...mapMutations(['toggleLightTheme']),
+  },
 };
 </script>
-
-<style>
-
-</style>

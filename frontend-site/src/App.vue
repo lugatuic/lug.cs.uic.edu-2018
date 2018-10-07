@@ -1,40 +1,28 @@
 <template>
-  <v-app>
-    <v-navigation-drawer
-      persistent
-      v-model="showNavDrawer"
-      enable-resize-watcher
-      fixed app>
-      the nav drawer
-      <!-- <v-list>
-        <v-list-tile
-          value="true"
-          v-for="(item, i) in items"
-          :key="i"
-        >
-          <v-list-tile-action>
-            <v-icon v-html="item.icon"></v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title v-text="item.title"></v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
-      </v-list> -->
-    </v-navigation-drawer>
+  <v-app :dark="!useLightTheme">
+    <main-nav-drawer v-model="showNavDrawer"/>
     <main-app-bar @sidemenu-button-click="showNavDrawer = !showNavDrawer"/>
     <v-content>
-      <router-view/>
+      <v-fade-transition mode="out-in">
+        <router-view/>
+      </v-fade-transition>
     </v-content>
   </v-app>
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import MainAppBar from '@/components/MainAppBar';
+import MainNavDrawer from '@/components/MainNavigationDrawer';
 
 export default {
   name: 'App',
   components: {
     MainAppBar,
+    MainNavDrawer,
+  },
+  computed: {
+    ...mapState(['useLightTheme']),
   },
   data () {
     return {
@@ -43,3 +31,17 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+.flex-container {
+  display: flex;
+
+  &.align-items-center {
+    align-items: center;
+  }
+}
+
+html {
+  overflow-y: auto;
+}
+</style>
