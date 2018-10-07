@@ -8,7 +8,7 @@
       <v-icon class="mr-1">person_add</v-icon>
       <span>Sign Up</span>
     </v-btn>
-    <v-btn icon>
+    <v-btn icon href="https://lugatuic.slack.com/messages" target="_blank" rel="noopener">
       <v-icon>fab fa-slack</v-icon>
     </v-btn>
     <v-btn icon @click="toggleLightTheme()">
