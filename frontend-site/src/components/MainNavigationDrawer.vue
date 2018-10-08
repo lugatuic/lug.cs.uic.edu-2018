@@ -1,6 +1,7 @@
 <template>
   <v-navigation-drawer
     persistent
+    :width="200"
     :value="value"
     @input="$emit('input', $event)"
     enable-resize-watcher
