@@ -6,7 +6,7 @@
     enable-resize-watcher
     fixed app>
     <v-container fluid class="pl-0 pr-0 pt-0">
-      <v-layout row class="site-logo pt-3 pb-3">
+      <v-layout row :class="{ 'site-logo pt-3': true, 'pb-3': $vuetify.breakpoint.mdAndUp, 'pb-2': $vuetify.breakpoint.smAndDown }">
         <v-flex class="text-xs-center">
           <img :src="require('@/assets/whiteTux.png')" class="mr-1"/>
           <h1 class="title">LUG@UIC</h1>

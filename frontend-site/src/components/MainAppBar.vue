@@ -1,6 +1,7 @@
 <template>
   <v-toolbar
-    app :clipped-left="false">
+    class="app-bar"
+    dark app :clipped-left="false">
     <v-toolbar-side-icon v-if="$vuetify.breakpoint.mdAndDown" @click="$emit('sidemenu-button-click')"/>
     <v-toolbar-title v-text="title"/>
     <v-spacer/>
@@ -32,3 +33,9 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+.app-bar.v-toolbar {
+  background-color: black;
+}
+</style>
