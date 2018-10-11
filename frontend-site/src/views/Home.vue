@@ -21,6 +21,9 @@
         </p>
       </v-flex>
     </v-layout>
+    <v-layout>
+      <event-carousel/>
+    </v-layout>
     <v-layout column align-center>
       <img src="@/assets/logo.png" alt="Vuetify.js" class="mb-5">
       Welcome to the home page.
@@ -31,10 +34,12 @@
 
 <script>
 import LugBannerSvg from '@/components/LugBannerSvg';
+import EventCarousel from '@/components/EventCarousel';
 
 export default {
   components: {
     LugBannerSvg,
+    EventCarousel,
   },
 };
 </script>
