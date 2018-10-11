@@ -1,29 +1,47 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+  <v-app :dark="!useLightTheme">
+    <main-nav-drawer v-model="showNavDrawer"/>
+    <main-app-bar @sidemenu-button-click="showNavDrawer = !showNavDrawer"/>
+    <v-content>
+      <v-fade-transition mode="out-in">
+        <router-view/>
+      </v-fade-transition>
+    </v-content>
+  </v-app>
 </template>
 
+<script>
+import { mapState } from 'vuex';
+import MainAppBar from '@/components/MainAppBar';
+import MainNavDrawer from '@/components/MainNavigationDrawer';
+
+export default {
+  name: 'App',
+  components: {
+    MainAppBar,
+    MainNavDrawer,
+  },
+  computed: {
+    ...mapState(['useLightTheme']),
+  },
+  data () {
+    return {
+      showNavDrawer: true,
+    };
+  },
+};
+</script>
+
 <style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+.flex-container {
+  display: flex;
+
+  &.align-items-center {
+    align-items: center;
   }
+}
+
+html {
+  overflow-y: auto;
 }
 </style>

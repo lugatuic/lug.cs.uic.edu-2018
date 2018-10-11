@@ -1,18 +1,9 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <v-container fluid>
+    <v-layout column align-center>
+      <img src="@/assets/logo.png" alt="Vuetify.js" class="mb-5">
+      Welcome to the home page.
+      <!-- Suggestion: these view components should contain mostly other components; actual component implementations should be their own components -->
+    </v-layout>
+  </v-container>
 </template>
-
-<script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
-export default {
-  name: 'home',
-  components: {
-    HelloWorld
-  }
-}
-</script>
