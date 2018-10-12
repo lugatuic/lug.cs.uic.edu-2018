@@ -1,7 +1,11 @@
 <template>
   <v-carousel class="event-carousel">
     <v-carousel-item v-for="(event, i) in events" :key="i">
-      <v-card raised class="event-carousel-card">
+      <v-card
+        :dark="!useLightTheme"
+        :light="useLightTheme"
+        raised
+        class="event-carousel-card">
         <v-card-title>
           {{ event.title }}
         </v-card-title>
@@ -14,8 +18,10 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 export default {
   computed: {
+    ...mapState(['useLightTheme']),
     events () {
       console.warn('using mock event data');
       // TODO: finalize format of events
