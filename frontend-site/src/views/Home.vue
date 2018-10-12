@@ -21,25 +21,35 @@
         </p>
       </v-flex>
     </v-layout>
-    <v-layout>
-      <event-carousel/>
+    <v-layout row wrap>
+      <v-flex xs12>
+        <h1 class="title">Events</h1>
+      </v-flex>
+      <v-flex xs12>
+        <event-carousel class="mb-4"/>
+      </v-flex>
     </v-layout>
-    <v-layout column align-center>
-      <img src="@/assets/logo.png" alt="Vuetify.js" class="mb-5">
-      Welcome to the home page.
-      <!-- Suggestion: these view components should contain mostly other components; actual component implementations should be their own components -->
+    <v-layout row wrap>
+      <v-flex xs12>
+        <h1 class="title">Main Officers</h1>
+      </v-flex>
+      <v-flex xs12>
+        <officer-listing/>
+      </v-flex>
     </v-layout>
   </v-container>
 </template>
 
 <script>
 import LugBannerSvg from '@/components/LugBannerSvg';
-import EventCarousel from '@/components/EventCarousel';
+import EventCarousel from '@/components/Home/EventCarousel';
+import OfficerListing from '@/components/Home/OfficerListing';
 
 export default {
   components: {
     LugBannerSvg,
     EventCarousel,
+    OfficerListing,
   },
 };
 </script>
