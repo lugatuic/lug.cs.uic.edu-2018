@@ -25,7 +25,7 @@ export default {
   computed: {
     ...mapState(['useLightTheme']),
     ...mapState('events', {
-      events: 'eventData',
+      events: 'data',
     }),
   },
   data () {
@@ -34,10 +34,10 @@ export default {
     };
   },
   methods: {
-    ...mapActions('events', ['updateEventData']),
+    ...mapActions('events', ['updateData']),
   },
   async mounted () {
-    await this.updateEventData();
+    await this.updateData();
     this.activeEvent = 0;
   },
 };

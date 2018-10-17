@@ -17,9 +17,9 @@ export default {
   },
   actions: {
     async updateData ({ commit, state }) {
-      const data = await lugApi.getEvents({ isMock: !!state.useMockData });
-      // send data sorted by start date
-      commit('setData', data.slice().sort((a, b) => new Date(a.timeStart) - new Date(b.timeStart)));
+      const data = await lugApi.getOfficers({ isMock: !!state.useMockData });
+      // TODO: sort by rank?
+      commit('setData', data);
     },
   },
 };

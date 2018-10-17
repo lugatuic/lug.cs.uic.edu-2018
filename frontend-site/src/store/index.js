@@ -1,12 +1,14 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import events from './events';
+import officers from './officers';
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   modules: {
     events,
+    officers,
   },
   state: {
     useLightTheme: false,

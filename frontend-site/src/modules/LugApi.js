@@ -26,14 +26,14 @@ export class LugApi {
     const apiUrl = `/api/officers${params.semester ? `?semester=${params.semester}` : ''}`;
     return !params.isMock
       ? this._getJson(this.generateUrl(apiUrl))
-      : mockOfficers;
+      : Promise.resolve(mockOfficers);
   }
 
   async getEvents (params = {}) {
     this._checkParamsForMock(params);
     return !params.isMock
       ? this._getJson(this.generateUrl('/api/events'))
-      : mockEvents;
+      : Promise.resolve(mockEvents);
   }
 }
 

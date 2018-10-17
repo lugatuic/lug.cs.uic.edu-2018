@@ -2,7 +2,7 @@ export const mockOfficers = Object.freeze([
   {
     name: "officer name",
     // TODO: validate rank entry?
-    rank: "some rank",
+    rank: "President",
     desc: "description of officer, just plaintext",
     github: "github link",
     personal_site: "link to personal",
