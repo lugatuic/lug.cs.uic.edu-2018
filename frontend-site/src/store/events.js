@@ -16,9 +16,10 @@ export default {
     },
   },
   actions: {
-    async updateEventData ({ dispatch, state }) {
+    async updateEventData ({ commit, state }) {
       const data = await lugApi.getEvents({ isMock: !!state.useMockData });
-      dispatch('setEventData', data);
+      // send data sorted by start date
+      commit('setEventData', data.slice().sort((a, b) => new Date(a.timeStart) - new Date(b.timeStart)));
     },
   },
 };

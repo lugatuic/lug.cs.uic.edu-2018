@@ -16,7 +16,7 @@ export class LugApi {
   // warn developers that mock data is being returned
   _checkParamsForMock (params) {
     if (typeof params === 'object' && params.isMock) {
-      console.warn('returning mock data');
+      console.warn('using mock data for API call');
     }
   }
 
