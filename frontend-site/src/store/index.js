@@ -1,9 +1,13 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import events from './events';
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
+  modules: {
+    events,
+  },
   state: {
     useLightTheme: false,
   },
@@ -12,7 +16,5 @@ export default new Vuex.Store({
       state.useLightTheme = (newValue !== undefined) ? !!newValue : !state.useLightTheme;
     },
   },
-  actions: {
-
-  },
+  strict: true,
 });
