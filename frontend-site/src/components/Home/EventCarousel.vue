@@ -1,13 +1,15 @@
 <template>
-  <v-carousel class="event-carousel">
+  <v-carousel class="event-carousel" v-model="activeEvent" hide-delimiters>
     <v-carousel-item v-for="(event, i) in events" :key="i">
+      <!-- TODO: move to separate component? -->
       <v-card
         :dark="!useLightTheme"
         :light="useLightTheme"
         raised
         class="event-carousel-card">
         <v-card-title>
-          {{ event.title }}
+          {{ event.summary }}<br>
+          {{ new Date(event.timeStart).toLocaleString() }} to {{ new Date(event.timeEnd).toLocaleString() }}
         </v-card-title>
         <v-card-text>
           {{ event }}
@@ -18,31 +20,25 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapState, mapActions } from 'vuex';
 export default {
   computed: {
     ...mapState(['useLightTheme']),
-    events () {
-      console.warn('using mock event data');
-      // TODO: finalize format of events
-      return [
-        {
-          title: 'event 1',
-          description: 'this is a sample event',
-          timing: 'Jan 01 1969 12 AM - 1 AM',
-        },
-        {
-          title: 'event 2',
-          description: 'this is a sample event',
-          timing: 'Jan 01 1969 12 AM - 1 AM',
-        },
-        {
-          title: 'event 3',
-          description: 'this is a sample event',
-          timing: 'Jan 01 1969 12 AM - 1 AM',
-        },
-      ];
-    },
+    ...mapState('events', {
+      events: 'data',
+    }),
+  },
+  data () {
+    return {
+      activeEvent: -1,
+    };
+  },
+  methods: {
+    ...mapActions('events', ['updateData']),
+  },
+  async mounted () {
+    await this.updateData();
+    this.activeEvent = 0;
   },
 };
 </script>
