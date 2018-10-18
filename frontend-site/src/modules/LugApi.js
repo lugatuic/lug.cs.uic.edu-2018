@@ -14,25 +14,26 @@ export class LugApi {
   }
 
   // warn developers that mock data is being returned
-  _checkParamsForMock (params) {
+  _checkParamsForMock (params, url) {
     if (typeof params === 'object' && params.isMock) {
-      console.warn('using mock data for API call');
+      console.warn('using mock data for API call', url);
     }
   }
 
   async getOfficers (params = {}) {
-    this._checkParamsForMock(params);
-    // TODO: error checking for semester?
+    // TODO: error checking for semester or leave it server side (i.e. server returns 4xx error)?
     const apiUrl = `/api/officers${params.semester ? `?semester=${params.semester}` : ''}`;
+    this._checkParamsForMock(params, apiUrl);
     return !params.isMock
       ? this._getJson(this.generateUrl(apiUrl))
       : Promise.resolve(mockOfficers);
   }
 
   async getEvents (params = {}) {
-    this._checkParamsForMock(params);
+    const apiUrl = '/api/events';
+    this._checkParamsForMock(params, apiUrl);
     return !params.isMock
-      ? this._getJson(this.generateUrl('/api/events'))
+      ? this._getJson(this.generateUrl(apiUrl))
       : Promise.resolve(mockEvents);
   }
 }
