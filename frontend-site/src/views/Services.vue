@@ -1,32 +1,19 @@
 <template>
   <v-container grid-list-lg>
     <v-layout row wrap>
-      <v-flex xs12 v-for="(service, i) in services" :key="i">
+      <v-flex xs12 sm6 md4 v-for="(service, i) in services" :key="i">
         <!-- TODO: refactor into exparate component -->
         <v-card class="ma-2">
           <v-container fluid class="pa-0">
             <v-layout row>
-              <v-flex xs6>
-                <template v-if="i % 2 === 0">
-                  <div style="border: 1px solid white; height: 100%;">
-                    {{ service.image }}
-                  </div>
-                </template>
-                <template v-else>
-                  <h1 class="title">{{ service.name }}</h1>
-                  <p>{{ service.description }}</p>
-                </template>
+              <v-flex xs5>
+                <div style="border: 1px solid white; height: 100%;">
+                  {{ service.image }}
+                </div>
               </v-flex>
-              <v-flex xs6>
-                <template v-if="i % 2 === 1">
-                  <div style="border: 1px solid white; height: 100%;">
-                    {{ service.image }}
-                  </div>
-                </template>
-                <template v-else>
-                  <h1 class="title">{{ service.name }}</h1>
-                  <p>{{ service.description }}</p>
-                </template>
+              <v-flex xs7>
+                <h1 class="title">{{ service.name }}</h1>
+                <p>{{ service.description }}</p>
               </v-flex>
             </v-layout>
           </v-container>

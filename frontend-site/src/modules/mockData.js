@@ -220,7 +220,9 @@ export const mockProjects = Object.freeze([
     largeImage: 'link to large image',
     wikiLink: 'link to wiki for this project',
     githubLink: 'link to github for this project',
+    startDate: new Date(),
   },
+  // TODO: add mock data for website redesign project
 ]);
 
 export const mockServices = Object.freeze([
