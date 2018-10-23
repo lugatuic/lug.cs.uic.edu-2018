@@ -32,7 +32,8 @@ export const mockOfficers = Object.freeze([
   },
 ]);
 
-export const mockEvents = Object.freeze([{
+export const mockEvents = Object.freeze([
+  {
     "summary": "/bin/systemctl: Virtual Machines",
     "timeStart": "2018-10-22T22:00:00.000Z",
     "timeEnd": "2018-10-22T23:00:00.000Z",
@@ -207,4 +208,27 @@ export const mockEvents = Object.freeze([{
     "location": "",
     "description": ""
   }
+]);
+
+export const mockProjects = Object.freeze([
+  // TODO: finalize project structure
+  {
+    name: 'Project Name',
+    status: 'incomplete', // use enums/predefined keys?
+    description: 'project description',
+    smallImage: 'link to small image',
+    largeImage: 'link to large image',
+    wikiLink: 'link to wiki for this project',
+    githubLink: 'link to github for this project',
+  },
+]);
+
+export const mockServices = Object.freeze([
+  // TODO: finalize service structure
+  {
+    name: 'Service Name',
+    image: 'link to service image',
+    description: 'description of service',
+    url: 'url for service, if any',
+  },
 ]);
