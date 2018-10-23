@@ -19,17 +19,10 @@
 </template>
 
 <script>
+import { utilitiesOffered } from '@/modules/staticData';
 export default {
   computed: {
-    utilities () {
-      console.warn('using mock utilities data');
-      return [
-        'Raspberry Pi',
-        'Arduino',
-        'Ice Cream',
-        '3-D Printing',
-      ];
-    },
+    utilities: () => utilitiesOffered,
   },
 };
 </script>
