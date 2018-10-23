@@ -18,7 +18,7 @@
           <!-- list of site links -->
           <v-list>
             <template v-for="(item, i) in pages">
-              <v-list-tile v-if="item.to" :key="i" :to="item.to">
+              <v-list-tile v-if="item.to || item.href" :key="i" :to="item.to" :href="item.href">
                 <v-list-tile-content>
                   <v-list-tile-title>{{ item.name }}</v-list-tile-title>
                 </v-list-tile-content>
@@ -29,7 +29,7 @@
                     <v-list-tile-title>{{ item.name }}</v-list-tile-title>
                   </v-list-tile-content>
                 </v-list-tile>
-                <v-list-tile v-for="(subItem, j) in item.sublinks" :key="j" :to="subItem.to">
+                <v-list-tile v-for="(subItem, j) in item.sublinks" :key="j" :to="subItem.to" :href="subItem.href">
                   <v-list-tile-content>
                     <v-list-tile-title>{{ subItem.name }}</v-list-tile-title>
                   </v-list-tile-content>
@@ -65,7 +65,9 @@ export default {
           },
           {
             name: 'Wiki',
-            to: '/wiki',
+            // TODO: eventually delete wiki page component
+            // to: '/wiki',
+            href: 'https://lug.cs.uic.edu/wiki/doku.php?id=start',
           },
         ],
       },
