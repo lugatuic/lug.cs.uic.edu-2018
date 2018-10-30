@@ -8,7 +8,7 @@
   
 # Backend Server
 
-The backend server is based on *Python 3.7.x*, using the *Flask* framework.
+The backend server is based on **Python 3.7.x**, using the **Flask** framework.
 
 ## Installation
 
@@ -39,6 +39,7 @@ file `Pipfile`. Currently, these are:
 * flask
 * flask-cors
 * pylint
+
 You can install these packages with the python package management solution of your
 choice (`pip`+`virtualenv`, `conda`, `poetry`, ...). Please use a tool and don't
 just install random python packages with naked `pip`, though; it might be ok now
@@ -61,7 +62,7 @@ list, choose the one with "lug.cs.uic.edu-2018" in its name.
 
 (Omit `pipenv shell` from all below instructions if not using)
 
-Powershell:
+Powershell (Windows):
 
 ```posh
 pipenv shell
