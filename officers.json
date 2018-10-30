@@ -9,13 +9,13 @@
     "image": "",
     "special_ability": "Heelys",
     "join_date": "",
-    "current_student": true,
     "term_start": "SUMMER_2018",
-    "term_end": "SPRING_2019"
+    "term_end": "SPRING_2019",
+    "graduating_semester": "SPRING_2019"
   },
   {
     "name": "Bharat Middha",
-    "position": "VICEPRESIDENT",
+    "position": "VICE_PRESIDENT",
     "description": "Fix it, sysadmin",
     "github": "bmiddha",
     "slack": "bharat",
@@ -23,9 +23,9 @@
     "image": "",
     "special_ability": "Arch",
     "join_date": "",
-    "current_student": true,
     "term_start": "SUMMER_2018",
-    "term_end": "SPRING_2019"
+    "term_end": "SPRING_2019",
+    "graduating_semester": "SPRING_2021"
   },
   {
     "name": "Joey Voorhees",
@@ -37,9 +37,9 @@
     "image": "",
     "special_ability": "Memes",
     "join_date": "",
-    "current_student": true,
     "term_start": "SUMMER_2018",
-    "term_end": "SPRING_2019"
+    "term_end": "SPRING_2019",
+    "graduating_semester": "SPRING_2021"
   },
   {
     "name": "Alex Matache",
@@ -51,9 +51,9 @@
     "image": "",
     "special_ability": "",
     "join_date": "",
-    "current_student": true,
     "term_start": "SUMMER_2017",
-    "term_end": "SPRING_2018"
+    "term_end": "SPRING_2018",
+    "graduating_semester": "FALL_2018"
   },
   {
     "name": "Kevin Liu",
@@ -65,8 +65,8 @@
     "image": "",
     "special_ability": "invisibility",
     "join_date": "",
-    "current_student": false,
     "term_start": "SUMMER_2017",
-    "term_end": "FALL_2017"
+    "term_end": "FALL_2017",
+    "graduating_semester": "SPRING_2018"
   }
 ]
