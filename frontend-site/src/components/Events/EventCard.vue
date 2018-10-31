@@ -1,9 +1,11 @@
 <template>
   <v-card :dark="!useLightTheme" :light="useLightTheme" raised class="event-card">
     <v-container fluid class="pl-5 pr-5">
-      <v-layout>
-        <v-flex>
+      <v-layout row wrap>
+        <v-flex xs12 sm6>
           <h1 class="headline">{{ event.summary }}</h1>
+        </v-flex>
+        <v-flex xs12 sm6>
           <h2 class="subheading">{{ dateHeading }}</h2>
           <h2 class="subheading">{{ locationDescription }}</h2>
         </v-flex>
