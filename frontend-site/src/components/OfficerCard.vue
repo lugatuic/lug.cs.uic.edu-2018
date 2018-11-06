@@ -2,6 +2,7 @@
   <v-card class="officer-card">
     <v-img
       contain
+      :alt="avatarAlt"
       :src="avatarUrl"
       aspect-ratio="2.75"/>
     <v-card-title>
@@ -47,6 +48,9 @@ export default {
   computed: {
     avatarUrl () {
       return this.officer.image || require('@/assets/whiteTux.png');
+    },
+    avatarAlt () {
+      return `${this.officer.name}'s image`;
     },
     officerName () {
       return [
