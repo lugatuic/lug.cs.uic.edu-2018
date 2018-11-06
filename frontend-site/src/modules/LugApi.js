@@ -1,4 +1,5 @@
 import { mockOfficers, mockEvents } from '@/modules/mockData';
+import { isDebugMode } from '@/modules/utils';
 
 export class LugApi {
   constructor (baseUrl = '') {
@@ -38,4 +39,5 @@ export class LugApi {
   }
 }
 
-export default new LugApi(window.webpackHotUpdate !== undefined ? 'http://localhost:5000' : '');
+// use localhost for dev purposes, current domain for production
+export default new LugApi(isDebugMode() ? 'http://localhost:5000' : '');
