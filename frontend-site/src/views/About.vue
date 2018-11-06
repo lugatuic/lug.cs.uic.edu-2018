@@ -45,14 +45,34 @@
             LUG shares an office with the UIC ACM in SELE 2264. Meetings are in SELE 2260 unless otherwise announced.
           </v-card-text>
           <v-card-actions>
-            <v-btn flat target="_blank" href="https://lugatuic.slack.com/messages" rel="noopener">
-              <v-icon left>fab fa-slack</v-icon>
-              Slack
-            </v-btn>
-            <v-btn flat target="_blank" href="https://github.com/lugatuic" rel="noopener">
-              <v-icon left>fab fa-github</v-icon>
-              Github
-            </v-btn>
+            <v-container fluid class="pa-0">
+              <v-layout row wrap>
+                <v-flex>
+                  <v-btn
+                    flat block target="_blank" rel="noopener"
+                    href="https://lugatuic.slack.com/messages">
+                    <v-icon left>fab fa-slack</v-icon>
+                    Slack
+                  </v-btn>
+                </v-flex>
+                <v-flex>
+                  <v-btn
+                    flat block target="_blank" rel="noopener"
+                    href="https://github.com/lugatuic">
+                    <v-icon left>fab fa-github</v-icon>
+                    Github
+                  </v-btn>
+                </v-flex>
+                <v-flex>
+                  <v-btn
+                    flat block target="_blank" rel="noopener"
+                    href="mailto:lug@uic.edu">
+                    <v-icon left>email</v-icon>
+                    Email
+                  </v-btn>
+                </v-flex>
+              </v-layout>
+            </v-container>
           </v-card-actions>
         </v-card>
       </v-flex>
