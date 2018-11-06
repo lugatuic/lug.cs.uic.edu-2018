@@ -1,14 +1,14 @@
 export const mockOfficers = Object.freeze([
   {
     description: "description of officer, just plaintext",
-    github: "",
+    github: "https://github.com/some_example_user",
     graduating_semester: "SPRING_2019",
-    image: "",
+    image: require('@/assets/whiteTux.png'),
     join_date: new Date().toString(),
     name: "officer name",
-    personal_site: "",
+    personal_site: "http://example.com/",
     position: "PRESIDENT",
-    slack: "",
+    slack: "a_slack_name",
     special_ability: "a special ability",
     term_end: "SPRING_2019",
     term_start: "SUMMER_2018"
