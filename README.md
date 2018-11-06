@@ -5,12 +5,20 @@
 * Project BackEnd Lead: Will Toher
 * Project Deployment: Bharat Middha (LUG VP/SysAdmin)
 * Project FrontEnd Lead: Joshua Castor 
+
+## Deployment
+
+(TODO)
   
-# Backend Server
+# Contributing
+
+We are using a version of the [Git Flow](https://nvie.com/posts/a-successful-git-branching-model/) style in this repository. This means that the `master` branch, the first branch you see when you load this page, is the last stable version of the website, and the `develop` branch incorporates more recent changes. Any changes you make should be done in *a new branch which derives from `develop`*.
+
+## Contributing to the Backend
 
 The backend server is based on **Python 3.7.x**, using the **Flask** framework.
 
-## Installation
+### Installation
 
 First, make sure you have the following installed:
 * Git
@@ -45,7 +53,7 @@ choice (`pip`+`virtualenv`, `conda`, `poetry`, ...). Please use a tool and don't
 just install random python packages with naked `pip`, though; it might be ok now
 but something will break eventually.
 
-### VSCode Setup
+#### VSCode Setup
 
 If you are using VSCode, you should install the following plugins:
 * [EditorConfig for VS Code](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig)
@@ -58,7 +66,7 @@ To make pipenv work with VSCode, you'll need to add this line to your `settings.
 Then enter `Ctrl-P` and select the command `Python: Select Interpreter`; from that
 list, choose the one with "lug.cs.uic.edu-2018" in its name.
 
-## Running
+### Running
 
 (Omit `pipenv shell` from all below instructions if not using Pipenv)
 
