@@ -8,7 +8,8 @@
     <v-card-title>
       <div>
         <h1 class="title">{{ officerName }}</h1>
-        <h2 class="subheading" style="text-transform: capitalize;">Term: {{ termsServingMessage }}</h2>
+        <h2 class="subheading" style="text-transform: capitalize;">{{ officer.position.replace(/_/g, ' ').toLowerCase() }}</h2>
+        <h3 class="subheading" style="text-transform: capitalize;">Term: {{ termsServingMessage }}</h3>
       </div>
     </v-card-title>
     <v-card-text>
