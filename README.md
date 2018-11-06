@@ -60,7 +60,7 @@ list, choose the one with "lug.cs.uic.edu-2018" in its name.
 
 ## Running
 
-(Omit `pipenv shell` from all below instructions if not using)
+(Omit `pipenv shell` from all below instructions if not using Pipenv)
 
 Powershell (Windows):
 
