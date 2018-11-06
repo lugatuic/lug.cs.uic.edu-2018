@@ -6,26 +6,23 @@
       :key="i">
       <!-- TODO: move into another separate component or keep inline here? -->
       <v-card class="utility-card">
-        <v-card-title>
-          <h1 class="title">{{ utility }}</h1>
-        </v-card-title>
+        <v-container fluid>
+          <v-layout align-center align-content-center>
+            <v-flex class="text-xs-center">
+              <h1 class="title">{{ utility }}</h1>
+            </v-flex>
+          </v-layout>
+        </v-container>
       </v-card>
     </v-flex>
   </v-layout>
 </template>
 
 <script>
+import { utilitiesOffered } from '@/modules/staticData';
 export default {
   computed: {
-    utilities () {
-      console.warn('using mock utilities data');
-      return [
-        'Raspberry Pi',
-        'Arduino',
-        'Ice Cream',
-        '3-D Printing',
-      ];
-    },
+    utilities: () => utilitiesOffered,
   },
 };
 </script>
