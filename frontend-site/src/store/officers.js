@@ -1,5 +1,6 @@
 import lugApi from '@/modules/LugApi';
 
+// TODO: decide to keep or drop; only needed for caching, but current implementation doesn't need it
 export default {
   namespaced: true,
   state: {

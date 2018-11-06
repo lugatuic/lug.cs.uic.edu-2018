@@ -21,9 +21,20 @@ export class LugApi {
     }
   }
 
+  _objectToUrlParams (params = {}) {
+    // assumption: each value is a string or easily converted into a string
+    return Object.keys(params)
+      .map(key => `${key}=${params[key]}`)
+      .join('&');
+  }
+
   async getOfficers (params = {}) {
     // TODO: error checking for semester or leave it server side (i.e. server returns 4xx error)?
-    const apiUrl = `/api/officers${params.semester ? `?semester=${params.semester}` : ''}`;
+    const apiUrl = [
+      '/api/officers',
+      this._objectToUrlParams(params),
+    ].filter(v => v) // filter out empty strings
+    .join('?');
     this._checkParamsForMock(params, apiUrl);
     return !params.isMock
       ? this._getJson(this.generateUrl(apiUrl))

@@ -11,22 +11,36 @@
 
 <script>
 import OfficerCard from '@/components/OfficerCard';
-import { mapState, mapActions } from 'vuex';
+import lugApi from '@/modules/LugApi';
 
 export default {
   components: {
     OfficerCard,
   },
   computed: {
-    ...mapState('officers', {
-      officers: 'data',
-    }),
+    // TODO: factor out if other things need this
+    currentSemester () {
+      const currentDate = new Date();
+      const currentMonth = currentDate.getMonth() + 1; // getMonth is 0 indexed, so add 1
+      const currentYear = currentDate.getUTCFullYear();
+      let currentSemester = '';
+      if (currentMonth <= 5) { // up to May
+        currentSemester = 'SPRING';
+      } else if (currentMonth <= 8) { // up to August
+        currentSemester = 'SUMMER';
+      } else {
+        currentSemester = 'FALL';
+      }
+      return `${currentSemester}_${currentYear}`;
+    },
   },
-  methods: {
-    ...mapActions('officers', ['updateData']),
-  },
+  data: () => ({
+    officers: [],
+  }),
   async mounted () {
-    await this.updateData();
+    this.officers = await lugApi.getOfficers({
+      semester: this.currentSemester,
+    });
   },
 };
 </script>
