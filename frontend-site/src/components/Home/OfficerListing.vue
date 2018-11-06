@@ -1,10 +1,22 @@
 <template>
   <v-layout row wrap class="officer-listing">
-    <v-flex
-      xs12 sm6 md4
-      v-for="(officer, i) in officers"
-      :key="i">
-      <officer-card :officer="officer"/>
+    <template v-if="!isLoading">
+      <v-flex
+        xs12 sm6 md4
+        v-for="(officer, i) in officers"
+        :key="i">
+        <officer-card :officer="officer"/>
+      </v-flex>
+      <v-flex v-if="officers.length === 0">
+        <v-card class="text-xs-center">
+          <v-card-text>No officer data found.</v-card-text>
+        </v-card>
+      </v-flex>
+    </template>
+    <v-flex v-else>
+      <v-card class="text-xs-center">
+          <v-card-text>Loading officer data...</v-card-text>
+        </v-card>
     </v-flex>
   </v-layout>
 </template>
@@ -36,11 +48,18 @@ export default {
   },
   data: () => ({
     officers: [],
+    isLoading: true,
   }),
   async mounted () {
-    this.officers = await lugApi.getOfficers({
-      semester: this.currentSemester,
-    });
+    try {
+      this.officers = await lugApi.getOfficers({
+        semester: this.currentSemester,
+      });
+    } catch (err) {
+      console.error(err);
+    } finally {
+      this.isLoading = false;
+    }
   },
 };
 </script>
