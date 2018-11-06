@@ -1,5 +1,5 @@
 <template>
-  <v-card class="officer-card">
+  <v-card :raised="!useLightTheme" class="officer-card">
     <v-img
       contain
       :alt="avatarAlt"
