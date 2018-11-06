@@ -29,7 +29,8 @@
             <h1 class="title">What We Do</h1>
           </v-card-title>
           <v-card-text>
-            What We Do goes here.
+            As an organization we provide support for students who are interested in learning about Linux and the open source community.
+            Our goal is to spread open source technology and grow as programmers and individuals and eventually be able to contribute to the open source community.
           </v-card-text>
         </v-card>
       </v-flex>
@@ -41,8 +42,18 @@
             <h1 class="title">Where Are We</h1>
           </v-card-title>
           <v-card-text>
-            info about office location, social links (slack, github, etc.) goes here.
+            LUG shares an office with the UIC ACM in SELE 2264. Meetings are in SELE 2260 unless otherwise announced.
           </v-card-text>
+          <v-card-actions>
+            <v-btn flat target="_blank" href="https://lugatuic.slack.com/messages" rel="noopener">
+              <v-icon left>fab fa-slack</v-icon>
+              Slack
+            </v-btn>
+            <v-btn flat target="_blank" href="https://github.com/lugatuic" rel="noopener">
+              <v-icon left>fab fa-github</v-icon>
+              Github
+            </v-btn>
+          </v-card-actions>
         </v-card>
       </v-flex>
     </v-layout>
