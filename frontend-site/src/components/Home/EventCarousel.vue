@@ -1,48 +1,35 @@
 <template>
-  <v-carousel class="event-carousel">
+  <v-carousel class="event-carousel" v-model="activeEvent" hide-delimiters>
     <v-carousel-item v-for="(event, i) in events" :key="i">
-      <v-card
-        :dark="!useLightTheme"
-        :light="useLightTheme"
-        raised
-        class="event-carousel-card">
-        <v-card-title>
-          {{ event.title }}
-        </v-card-title>
-        <v-card-text>
-          {{ event }}
-        </v-card-text>
-      </v-card>
+      <event-card :event="event"/>
     </v-carousel-item>
   </v-carousel>
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapState, mapActions } from 'vuex';
+import EventCard from '@/components/Home/EventCard';
 export default {
+  components: {
+    EventCard,
+  },
   computed: {
     ...mapState(['useLightTheme']),
-    events () {
-      console.warn('using mock event data');
-      // TODO: finalize format of events
-      return [
-        {
-          title: 'event 1',
-          description: 'this is a sample event',
-          timing: 'Jan 01 1969 12 AM - 1 AM',
-        },
-        {
-          title: 'event 2',
-          description: 'this is a sample event',
-          timing: 'Jan 01 1969 12 AM - 1 AM',
-        },
-        {
-          title: 'event 3',
-          description: 'this is a sample event',
-          timing: 'Jan 01 1969 12 AM - 1 AM',
-        },
-      ];
-    },
+    ...mapState('events', {
+      events: 'data',
+    }),
+  },
+  data () {
+    return {
+      activeEvent: -1,
+    };
+  },
+  methods: {
+    ...mapActions('events', ['updateData']),
+  },
+  async mounted () {
+    await this.updateData();
+    this.activeEvent = 0;
   },
 };
 </script>
@@ -51,8 +38,5 @@ export default {
 .event-carousel {
   // TODO: determine a good size, or do programmatically?
   height: 300px;
-  .event-carousel-card {
-    height: 100%;
-  }
 }
 </style>

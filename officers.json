@@ -1,0 +1,72 @@
+[
+  {
+    "name": "Ben Maciorowski",
+    "position": "PRESIDENT",
+    "description": "Constantly dying",
+    "github": "",
+    "slack": "benbigmac",
+    "personal_site": "",
+    "image": "",
+    "special_ability": "Heelys",
+    "join_date": "",
+    "term_start": "SUMMER_2018",
+    "term_end": "SPRING_2019",
+    "graduating_semester": "SPRING_2019"
+  },
+  {
+    "name": "Bharat Middha",
+    "position": "VICE_PRESIDENT",
+    "description": "Fix it, sysadmin",
+    "github": "bmiddha",
+    "slack": "bharat",
+    "personal_site": "",
+    "image": "",
+    "special_ability": "Arch",
+    "join_date": "",
+    "term_start": "SUMMER_2018",
+    "term_end": "SPRING_2019",
+    "graduating_semester": "SPRING_2021"
+  },
+  {
+    "name": "Joey Voorhees",
+    "position": "TREASURER",
+    "description": "Lactose intolerant",
+    "github": "",
+    "slack": "apollo",
+    "personal_site": "",
+    "image": "",
+    "special_ability": "Memes",
+    "join_date": "",
+    "term_start": "SUMMER_2018",
+    "term_end": "SPRING_2019",
+    "graduating_semester": "SPRING_2021"
+  },
+  {
+    "name": "Alex Matache",
+    "position": "PRESIDENT",
+    "description": "Constantly dying inside",
+    "github": "",
+    "slack": "alexmatache",
+    "personal_site": "",
+    "image": "",
+    "special_ability": "",
+    "join_date": "",
+    "term_start": "SUMMER_2017",
+    "term_end": "SPRING_2018",
+    "graduating_semester": "FALL_2018"
+  },
+  {
+    "name": "Kevin Liu",
+    "position": "TREASURER",
+    "description": "Dapper dresser",
+    "github": "",
+    "slack": "",
+    "personal_site": "",
+    "image": "",
+    "special_ability": "invisibility",
+    "join_date": "",
+    "term_start": "SUMMER_2017",
+    "term_end": "FALL_2017",
+    "graduating_semester": "SPRING_2018"
+  }
+]

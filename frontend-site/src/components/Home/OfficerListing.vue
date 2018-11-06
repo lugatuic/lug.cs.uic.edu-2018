@@ -11,38 +11,22 @@
 
 <script>
 import OfficerCard from '@/components/OfficerCard';
+import { mapState, mapActions } from 'vuex';
 
 export default {
-  computed: {
-    officers () {
-      console.warn('using mock officer data');
-      return [
-        {
-          name: 'Jane Doe',
-          // picture: 'url goes here',
-          bio: 'A bio would go nicely here. Should we allow HTML here or just plaintext?',
-          position: 'President',
-          special: 'Leads projects in directions',
-        },
-        {
-          name: 'John Smith',
-          // picture: 'url goes here',
-          bio: 'A bio would go nicely here. Should we allow HTML here or just plaintext?',
-          position: 'Vice President',
-          special: 'Leads projects in other directions',
-        },
-        {
-          name: 'Bob',
-          // picture: 'url goes here',
-          bio: 'A bio would go nicely here. Should we allow HTML here or just plaintext?',
-          position: 'Treasurer',
-          special: 'Gives money to people for useful things',
-        },
-      ];
-    },
-  },
   components: {
     OfficerCard,
+  },
+  computed: {
+    ...mapState('officers', {
+      officers: 'data',
+    }),
+  },
+  methods: {
+    ...mapActions('officers', ['updateData']),
+  },
+  async mounted () {
+    await this.updateData();
   },
 };
 </script>
