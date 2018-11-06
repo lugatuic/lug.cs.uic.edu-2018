@@ -39,6 +39,8 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
   props: {
     officer: {
@@ -47,8 +49,12 @@ export default {
     },
   },
   computed: {
+    ...mapState(['useLightTheme']),
+    defaultAvatarUrl () {
+      return this.useLightTheme ? require('@/assets/blackTux.png') : require('@/assets/whiteTux.png');
+    },  
     avatarUrl () {
-      return this.officer.image || require('@/assets/whiteTux.png');
+      return this.officer.image || this.defaultAvatarUrl;
     },
     avatarAlt () {
       return `${this.officer.name}'s image`;
