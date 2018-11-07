@@ -1,3 +1,4 @@
+
 <template>
   <v-layout row wrap class="officer-listing">
     <template v-if="!isLoading">
@@ -18,6 +19,7 @@
           <v-card-text>Loading officer data...</v-card-text>
         </v-card>
     </v-flex>
+
   </v-layout>
 </template>
 
@@ -67,5 +69,9 @@ export default {
 <style>
 .officer-listing .officer-card {
   height: 100%;
+}
+
+.officer-listing {
+  background-image: url();
 }
 </style>
