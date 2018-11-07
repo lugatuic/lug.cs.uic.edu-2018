@@ -1,11 +1,16 @@
+
 <template>
-  <v-layout row wrap class="officer-listing">
+<!--TODO: Modify background -->
+  <v-layout row wrap class="officer-listing" >
+
     <v-flex
       xs12 sm6 md4
       v-for="(officer, i) in officers"
       :key="i">
+      
       <officer-card :officer="officer"/>
     </v-flex>
+
   </v-layout>
 </template>
 
@@ -34,5 +39,9 @@ export default {
 <style>
 .officer-listing .officer-card {
   height: 100%;
+}
+
+.officer-listing {
+  background-image: url();
 }
 </style>
