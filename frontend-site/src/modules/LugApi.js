@@ -28,13 +28,17 @@ export class LugApi {
       .join('&');
   }
 
-  async getOfficers (params = {}) {
-    // TODO: error checking for semester or leave it server side (i.e. server returns 4xx error)?
-    const apiUrl = [
-      '/api/officers',
+  _toApiUrl (url = '', params = {}) {
+    return [
+      url,
       this._objectToUrlParams(params),
     ].filter(v => v) // filter out empty strings
     .join('?');
+  }
+
+  async getOfficers (params = {}) {
+    // TODO: error checking for semester or leave it server side (i.e. server returns 4xx error)?
+    const apiUrl = this._toApiUrl('/api/officers', params);
     this._checkParamsForMock(params, apiUrl);
     return !params.isMock
       ? this._getJson(this.generateUrl(apiUrl))
@@ -42,7 +46,7 @@ export class LugApi {
   }
 
   async getEvents (params = {}) {
-    const apiUrl = '/api/events';
+    const apiUrl = this._toApiUrl('/api/events', params);
     this._checkParamsForMock(params, apiUrl);
     return !params.isMock
       ? this._getJson(this.generateUrl(apiUrl))
@@ -51,4 +55,5 @@ export class LugApi {
 }
 
 // use localhost for dev purposes, current domain for production
+// TODO: make dev url and port configurable?
 export default new LugApi(isDebugMode() ? 'http://localhost:5000' : '');
