@@ -1,6 +1,6 @@
 // TODO: decide what stays here and what can be stored as a JSON file for the API to send
 export const utilitiesOffered = Object.freeze([
-  '3-D Printing',
+  '3D Printing',
   'Raspberry Pi',
   'Arduino',
   'LUG API',
