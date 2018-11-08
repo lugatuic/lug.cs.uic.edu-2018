@@ -13,7 +13,7 @@ export const servicesOffered = Object.freeze([
   {
     name: '3D Printing',
     image: '',
-    description: 'Becoming a LUG member brings many perks such as having easy access to our 3D printer located in the ACM/LUG office. Members can watch their creations come alive for minimal cost.',
+    description: 'LUG members enjoy many perks, including easy access to our 3D printer located in the ACM/LUG office. Watch your creations come alive for a minimal cost.',
     url: 'https://lug.cs.uic.edu/3dprint/home',
   },
   {
