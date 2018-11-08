@@ -19,7 +19,7 @@ export const servicesOffered = Object.freeze([
   {
     name: 'Raspberry Pi',
     image: '',
-    description: 'At the center of student creativity in computing is the infamous Rasberry Pi, and LUG is here to help students gain access to one. We offer Rasberry Pi rentals for any student interested.',
+    description: 'The Raspberry Pi single-board computer has been instrumental in encouraging student creativity, and LUG is here to help students gain access to one. We offer Raspberry Pi rentals for any student interested. A Raspberry Pi is powerful enough to run a full Linux installation and many student projects; ask an officer if it's the right choice for you.',
     url: '',
   },
   {
