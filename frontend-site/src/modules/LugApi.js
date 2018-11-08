@@ -1,4 +1,5 @@
 import { mockOfficers, mockEvents } from '@/modules/mockData';
+import { isDebugMode } from '@/modules/utils';
 
 export class LugApi {
   constructor (baseUrl = '') {
@@ -20,9 +21,24 @@ export class LugApi {
     }
   }
 
+  _objectToUrlParams (params = {}) {
+    // assumption: each value is a string or easily converted into a string
+    return Object.keys(params)
+      .map(key => `${key}=${params[key]}`)
+      .join('&');
+  }
+
+  _toApiUrl (url = '', params = {}) {
+    return [
+      url,
+      this._objectToUrlParams(params),
+    ].filter(v => v) // filter out empty strings
+    .join('?');
+  }
+
   async getOfficers (params = {}) {
     // TODO: error checking for semester or leave it server side (i.e. server returns 4xx error)?
-    const apiUrl = `/api/officers${params.semester ? `?semester=${params.semester}` : ''}`;
+    const apiUrl = this._toApiUrl('/api/officers', params);
     this._checkParamsForMock(params, apiUrl);
     return !params.isMock
       ? this._getJson(this.generateUrl(apiUrl))
@@ -30,7 +46,7 @@ export class LugApi {
   }
 
   async getEvents (params = {}) {
-    const apiUrl = '/api/events';
+    const apiUrl = this._toApiUrl('/api/events', params);
     this._checkParamsForMock(params, apiUrl);
     return !params.isMock
       ? this._getJson(this.generateUrl(apiUrl))
@@ -38,4 +54,6 @@ export class LugApi {
   }
 }
 
-export default new LugApi(window.webpackHotUpdate !== undefined ? 'http://localhost:5000' : '');
+// use localhost for dev purposes, current domain for production
+// TODO: make dev url and port configurable?
+export default new LugApi(isDebugMode() ? 'http://localhost:5000' : '');

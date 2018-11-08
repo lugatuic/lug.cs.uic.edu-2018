@@ -1,11 +1,11 @@
 import lugApi from '@/modules/LugApi';
 
+// TODO: decide to keep or drop; only needed for caching, but current implementation doesn't need it
 export default {
   namespaced: true,
   state: {
     data: [],
-    // TODO: remove mock parameter once backend has API ready
-    useMockData: true,
+    useMockData: false,
   },
   mutations: {
     setData (state, data) {
@@ -16,10 +16,15 @@ export default {
     },
   },
   actions: {
-    async updateData ({ commit, state }) {
-      const data = await lugApi.getOfficers({ isMock: !!state.useMockData });
-      // TODO: sort by rank?
-      commit('setData', data);
+    async updateData ({ commit, dispatch }, params) {
+      const officers = await dispatch('getData', params);
+      commit('setData', officers);
+    },
+    getData ({ state }, params = {}) {
+      return lugApi.getOfficers({
+        isMock: !!state.useMockData,
+        ...params,
+      });
     },
   },
 };
