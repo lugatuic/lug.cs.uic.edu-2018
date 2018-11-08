@@ -2,9 +2,7 @@
   <v-container grid-list-lg>
     <v-layout row>
       <v-flex>
-        <v-card>
-          Search area here?
-        </v-card>
+        <search-card/>
       </v-flex>
     </v-layout>
     <v-layout row wrap>
@@ -54,8 +52,12 @@
 
 <script>
 import { mockProjects } from '@/modules/mockData';
+import SearchCard from '@/components/Projects/SearchCard';
 
 export default {
+  components: {
+    SearchCard,
+  },
   computed: {
     projects: () => new Array(12).fill(mockProjects[0]),
   },
