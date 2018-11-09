@@ -92,7 +92,7 @@ export default {
     resultText () {
       return `${this.value.length} ${this.value.length === 1 ? 'result' : 'results'}`;
     },
-    sortTypes: () => ['Name', 'Status', 'Date'],
+    sortTypes: () => ['Name', 'Status', 'Start Date'],
     statusValues: () => projectValues.statusFilterValues,
     wikiValues: () => projectValues.wikiLinkFilterValues,
     githubValues: () => projectValues.gitHubLinkFilterValues,
@@ -101,18 +101,16 @@ export default {
         const result = a.name < b.name ? -1 : 1;
         return isAscending ? result : -result;
       },
-      // Status: (a, b, isAscending) => {
-      //   const [indexA, indexB] = [this.statusFilterValues.m]
-      // },
+      Status: (a, b, isAscending) => {
+        // order based on index order in values array
+        const diff = projectValues.statusFilterValues.indexOf(a.status.toLowerCase()) - projectValues.statusFilterValues.indexOf(b.status.toLowerCase());
+        return isAscending ? diff : -diff;
+      },
+      'Start Date': (a, b, isAscending) => {
+        const diff = new Date(a.startDate) - new Date(b.startDate);
+        return isAscending ? diff : -diff;
+      },
     }),
-    // hasAnyFilters () {
-    //   return [
-    //     !!this.filterOptions.textQuery,
-    //     this.filterOptions.status.length !== this.statusValues,
-    //     this.filterOptions.wiki.length !== this.wikiValues,
-    //     this.filterOptions.github.length !== this.githubValues,
-    //   ].some(v => v);
-    // },
   },
   data () {
     return {
@@ -155,7 +153,10 @@ export default {
       const sortFunction = this.sorts[this.sortOptions.type] || this.sorts.Name;
       return input.slice().sort((a, b) => sortFunction(a, b, this.sortOptions.isAscending));
     },
-    applyOptionsAndUpdate: debounce(function () {
+    applyFiltersAndUpdate: debounce(function () {
+      this.sendNewProjectList(this.applySorts(this.applyFilters(this.allProjects)));
+    }, 500),
+    applySortsAndUpdate: debounce(function () {
       this.sendNewProjectList(this.applySorts(this.applyFilters(this.allProjects)));
     }, 500),
   },
@@ -163,12 +164,18 @@ export default {
     filterOptions: {
       deep: true,
       handler () {
-        this.applyOptionsAndUpdate();
+        this.applyFiltersAndUpdate();
+      },
+    },
+    sortOptions: {
+      deep: true,
+      handler () {
+        this.applySortsAndUpdate();
       },
     },
     value (newValue, oldValue) {
       if (!arraysAreEquivalent(newValue, oldValue)) {
-        this.applyOptionsAndUpdate();
+        this.applyFiltersAndUpdate();
       }
     },
   },
