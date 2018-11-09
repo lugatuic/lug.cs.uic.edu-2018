@@ -225,13 +225,33 @@ export const mockProjects = Object.freeze([
   // TODO: finalize project structure
   {
     name: 'Project Name',
-    status: 'incomplete', // use enums/predefined keys?
+    status: 'incomplete',
     description: 'project description',
-    smallImage: 'link to small image',
-    largeImage: 'link to large image',
+    smallImage: '',
+    largeImage: '',
     wikiLink: 'link to wiki for this project',
     githubLink: 'link to github for this project',
     startDate: new Date(),
+  },
+  {
+    name: 'Another Project Name',
+    status: 'abandoned',
+    description: 'abandoned project description',
+    smallImage: '',
+    largeImage: '',
+    wikiLink: '',
+    githubLink: '',
+    startDate: new Date('Oct 18 2018'),
+  },
+  {
+    name: 'Yet Another Project Name',
+    status: 'complete',
+    description: 'completed project description',
+    smallImage: '',
+    largeImage: '',
+    wikiLink: '',
+    githubLink: 'github link',
+    startDate: new Date('Nov 1 2018'),
   },
   // TODO: add mock data for website redesign project
 ]);

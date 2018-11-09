@@ -2,7 +2,10 @@
   <v-container grid-list-lg>
     <v-layout row>
       <v-flex>
-        <search-card/>
+        <search-card
+          :allProjects="allProjects"
+          v-model="projects"
+        />
       </v-flex>
     </v-layout>
     <v-layout row wrap>
@@ -59,13 +62,18 @@ export default {
     SearchCard,
   },
   computed: {
-    projects: () => new Array(12).fill(mockProjects[0]),
+    // a master list of all projects
+    allProjects: () => mockProjects,
   },
   data () {
     return {
       activeProject: null,
       showModal: false,
+      projects: [],
     };
+  },
+  created () {
+    this.projects = this.allProjects.slice();
   },
   mounted () {
     console.warn('using mock data for projects');
@@ -81,6 +89,9 @@ export default {
       if (!newValue) {
         this.activeProject = null;
       }
+    },
+    allProjects (newValue) {
+      this.projects = newValue.slice();
     },
   },
 };
