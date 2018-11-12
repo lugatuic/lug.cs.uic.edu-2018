@@ -6,6 +6,8 @@ import json
 import re
 from flask import Flask, jsonify, request
 from flask_cors import CORS
+from icalendar import Calendar
+import requests #using this to yank the ics file from google calendar
 
 class Positions(Enum):
   """
@@ -185,6 +187,7 @@ def getOfficers():
       return getSemesterID(reqstr)
     return None
 
+
   # Get officers from json file
   with open('officers.json') as officers_file:
     officers = json.load(officers_file, object_hook=Officer)
@@ -228,3 +231,17 @@ def getOfficers():
 
   # Convert Officer objects back to dictionaries before returning
   return jsonify([x.__dict__ for x in officers])
+
+calurl = 'https://calendar.google.com/calendar/ical/ca149os3pmnh0dcopr1jn2negg%40group.calendar.google.com/public/basic.ics'
+@app.route('/api/events')
+def getEvents():
+  gcal = Calendar.from_ical(requests.get(calurl).content)
+  ev = []
+  #TODO:Finalize time output and make it CST
+  for comp in [x for x in gcal.walk() if x.name=="VEVENT"]:
+     ev.append({'summary': comp.decoded('SUMMARY').decode('UTF-8'), 
+      'timeStart': comp.decoded('DTSTART').strftime('%Y-%m-%dT%H:%M:%S'),
+      'timeEnd': comp.decoded('DTEND').strftime('%Y-%m-%dT%H:%M:%S'),
+      'location': comp.decoded('LOCATION').decode('UTF-8'),
+      'description': comp.decoded('DESCRIPTION').decode('UTF-8')})
+  return jsonify(ev)
