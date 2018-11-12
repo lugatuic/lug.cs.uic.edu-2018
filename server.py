@@ -187,7 +187,6 @@ def getOfficers():
       return getSemesterID(reqstr)
     return None
 
-
   # Get officers from json file
   with open('officers.json') as officers_file:
     officers = json.load(officers_file, object_hook=Officer)
