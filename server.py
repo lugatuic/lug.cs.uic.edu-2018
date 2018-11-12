@@ -233,6 +233,7 @@ def getOfficers():
   return jsonify([x.__dict__ for x in officers])
 
 calurl = 'https://calendar.google.com/calendar/ical/ca149os3pmnh0dcopr1jn2negg%40group.calendar.google.com/public/basic.ics'
+dtstrformat = '%Y-%m-%dT%H:%M:%S'
 @app.route('/api/events')
 def getEvents():
   gcal = Calendar.from_ical(requests.get(calurl).content)
@@ -240,8 +241,8 @@ def getEvents():
   #TODO:Finalize time output and make it CST
   for comp in [x for x in gcal.walk() if x.name=="VEVENT"]:
      ev.append({'summary': comp.decoded('SUMMARY').decode('UTF-8'), 
-      'timeStart': comp.decoded('DTSTART').strftime('%Y-%m-%dT%H:%M:%S'),
-      'timeEnd': comp.decoded('DTEND').strftime('%Y-%m-%dT%H:%M:%S'),
+      'timeStart': comp.decoded('DTSTART').strftime(dtstrformat),
+      'timeEnd': comp.decoded('DTEND').strftime(dtstrformat),
       'location': comp.decoded('LOCATION').decode('UTF-8'),
       'description': comp.decoded('DESCRIPTION').decode('UTF-8')})
   return jsonify(ev)
