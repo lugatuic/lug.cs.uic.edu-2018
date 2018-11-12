@@ -19,7 +19,7 @@
       <v-spacer/>
       <v-btn
         v-if="officer.github"
-        :href="officer.github"
+        :href="githubLink"
         rel="noopener"
         target="_blank"
         icon>
@@ -77,6 +77,9 @@ export default {
         this.officer.term_start.replace(/_/g, ' '),
         this.officer.term_end.replace(/_/g, ' '),
       ].join('-');
+    },
+    githubLink () {
+      return `https://github.com/${this.officer.github}`;
     },
   },
 };
