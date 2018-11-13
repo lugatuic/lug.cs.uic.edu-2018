@@ -14,6 +14,7 @@ class Positions(Enum):
   PRESIDENT = "PRESIDENT"
   VICE_PRESIDENT = "VICE_PRESIDENT"
   TREASURER = "TREASURER"
+  SECRETARY = "SECRETARY"
   MEMBER = "MEMBER"
 
 app = Flask(__name__, static_url_path='/static/', static_folder='frontend-site/dist')
@@ -101,7 +102,7 @@ def getOfficers():
   """
   API function to retrieve officers
   Parameters:
-  /api/officers?position=[PRESIDENT,VICE_PRESIDENT,TREASURER]
+  /api/officers?position=[PRESIDENT,VICE_PRESIDENT,TREASURER,SECRETARY]
                ?semester=SEASON_YEAR
                   e.g. "?semester=SUMMER_2018
                   Overrides 'year'
