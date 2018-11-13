@@ -44,4 +44,12 @@ export default {
 html {
   overflow-y: auto;
 }
+
+.theme--dark {
+  --card-default-background-color: #424242;
+}
+
+.theme-light {
+  --card-default-background-color: #fff;
+}
 </style>
