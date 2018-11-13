@@ -6,13 +6,66 @@
 * Project Deployment: Bharat Middha (LUG VP/SysAdmin)
 * Project FrontEnd Lead: Joshua Castor 
 
-## Deployment
+# Requirements
+* Git
+* Node.js 8+
+* NPM 6.4.x+ (should come with Node.js)
+* Python 3.7.x
+* [Pipenv](https://github.com/pypa/pipenv) (recommended)
+* An editor that supports Pylint, Editorconfig, ESLint, and Vue syntax highlighting, e.g. VSCode
+
+# Deployment
 
 (TODO)
   
 # Contributing
 
 We are using a version of the [Git Flow](https://nvie.com/posts/a-successful-git-branching-model/) style in this repository. This means that the `master` branch, the first branch you see when you load this page, is the last stable version of the website, and the `develop` branch incorporates more recent changes. Any changes you make should be done in *a new branch which derives from `develop`*.
+
+## Contributing to the Frontend
+
+The frontend site is a project using the **Vue.js** framework.
+
+### Installation
+
+First, make sure you have the following installed:
+
+* Git
+* Node.js 8+
+* NPM 6.4.x+ (should come with Node.js)
+* An editor that supports ESLint and Vue syntax highlighting, e.g. VSCode
+
+Clone the repository and go to the `frontend-site` folder:
+```
+git clone https://github.com/lugatuic/lug.cs.uic.edu-2018.git
+cd lug.cs.uic.edu-2018
+cd frontend-site
+```
+
+Switch to the `develop` branch:
+```
+git checkout develop
+```
+
+Install dependencies with npm:
+```
+npm install
+```
+
+#### VSCode Setup
+
+If you are using VSCode, you should install the following plugins:
+* [Vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur)
+* [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+
+### Running
+
+From the `frontend-site` folder, run the following command to start a local development server. As you make changes to the Vue project, the local server will auto compile your changes and let you know of any errors found.
+```
+npm run serve
+```
+
+If you need to access any backend API endpoints during development, refer to the instructions below on setting up the backend server.
 
 ## Contributing to the Backend
 
