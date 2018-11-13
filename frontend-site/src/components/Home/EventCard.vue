@@ -1,5 +1,10 @@
 <template>
-  <v-card :dark="!useLightTheme" :light="useLightTheme" raised class="event-card">
+  <v-card
+    :dark="!useLightTheme"
+    :light="useLightTheme"
+    raised
+    :flat="flat"
+    class="event-card">
     <v-container fluid class="pl-5 pr-5">
       <v-layout row wrap>
         <v-flex xs12 sm6>
@@ -27,6 +32,10 @@ export default {
     event: {
       type: Object,
       required: true,
+    },
+    flat: {
+      type: Boolean,
+      default: false,
     },
   },
   computed: {
@@ -61,9 +70,3 @@ export default {
   },
 };
 </script>
-
-<style>
-.event-card {
-  height: 100%;
-}
-</style>
