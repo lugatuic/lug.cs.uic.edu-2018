@@ -1,5 +1,5 @@
 <template>
-  <v-carousel class="event-carousel" v-model="activeEvent" hide-delimiters :cycle="false">
+  <v-carousel class="event-carousel" v-model="activeEvent" hide-delimiters>
     <v-carousel-item v-for="(event, i) in events" :key="i">
       <event-card :event="event" :flat="true"/>
     </v-carousel-item>
@@ -9,6 +9,7 @@
 <script>
 import { mapState, mapActions } from 'vuex';
 import EventCard from '@/components/Home/EventCard';
+import debounce from 'lodash/debounce';
 export default {
   components: {
     EventCard,
@@ -23,6 +24,7 @@ export default {
     return {
       activeEvent: -1,
       height: 50,
+      onAnimationEndHandler: null,
     };
   },
   methods: {
@@ -47,15 +49,26 @@ export default {
   async mounted () {
     await this.updateData();
     this.activeEvent = 0;
+
+    // shared instance for EH removal in beforeDestroy
+    // debounced in case multiple EH fire simultaneously
+    this.onAnimationEndHandler = debounce(() => this.updateHeight(), 50);
+
+    // add event handler for after transitions finish to ensure only one card is visible when updating height
+    Array.from(this.$el.querySelectorAll('.v-carousel__item')).forEach(item => {
+      item.addEventListener('transitionend', this.onAnimationEndHandler);
+      item.addEventListener('webkitTransitionEnd', this.onAnimationEndHandler);
+    });
+  },
+  beforeDestroy () {
+    Array.from(this.$el.querySelectorAll('.v-carousel__item')).forEach(item => {
+      item.removeEventListener('transitionend', this.onAnimationEndHandler);
+      item.removeEventListener('webkitTransitionEnd', this.onAnimationEndHandler);
+    });
   },
   watch: {
     height (newValue) {
-      console.debug('height changed to', newValue);
       this.$el.style.height = `${newValue}px`;
-    },
-    activeEvent () {
-      // wait 1 tick for animation to finish
-      this.$nextTick().then(() => this.updateHeight());
     },
   },
 };
@@ -64,5 +77,6 @@ export default {
 <style lang="scss">
 .event-carousel {
   background-color: var(--card-default-background-color);
+  height: 150px; // default
 }
 </style>
