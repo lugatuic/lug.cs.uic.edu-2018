@@ -56,6 +56,20 @@
     "graduating_semester": "FALL_2018"
   },
   {
+    "name": "Mathew (매튜) Kim",
+    "position": "VICE_PRESIDENT",
+    "description": "VP",
+    "github": "",
+    "slack": "",
+    "personal_site": "",
+    "image": "",
+    "special_ability": "",
+    "join_date": "",
+    "term_start": "SUMMER_2018",
+    "term_end": "SPRING_2019",
+    "graduating_semester": ""
+  },
+  {
     "name": "Kevin Liu",
     "position": "TREASURER",
     "description": "Dapper dresser",
@@ -68,5 +82,62 @@
     "term_start": "SUMMER_2017",
     "term_end": "FALL_2017",
     "graduating_semester": "SPRING_2018"
-  }
+  },
+  {
+    "name": "James Hwang",
+    "position": "PRESIDENT",
+    "description": "",
+    "github": "",
+    "slack": "",
+    "personal_site": "",
+    "image": "",
+    "special_ability": "",
+    "join_date": "",
+    "term_start": "SUMMER_2016",
+    "term_end": "SPRING_2017",
+    "graduating_semester": ""
+  },
+  {
+    "name": "Michael Baccia",
+    "position": "VICE_PRESIDENT",
+    "description": "Hacker Man",
+    "github": "",
+    "slack": "",
+    "personal_site": "",
+    "image": "",
+    "special_ability": "",
+    "join_date": "",
+    "term_start": "SUMMER_2016",
+    "term_end": "SPRING_2017",
+    "graduating_semester": ""
+  },
+  {
+    "name": "Xing Li",
+    "position": "TREASURER",
+    "description": "",
+    "github": "",
+    "slack": "",
+    "personal_site": "",
+    "image": "",
+    "special_ability": "",
+    "join_date": "",
+    "term_start": "SUMMER_2016",
+    "term_end": "FALL_2017",
+    "graduating_semester": ""
+  },
+  {
+    "name": "Mathew (매튜) Kim",
+    "position": "Secretary",
+    "description": "",
+    "github": "",
+    "slack": "",
+    "personal_site": "",
+    "image": "",
+    "special_ability": "",
+    "join_date": "",
+    "term_start": "SUMMER_2016",
+    "term_end": "SPRING_2017",
+    "graduating_semester": ""
+  },
+
 ]
