@@ -1,5 +1,9 @@
 <template>
-  <v-carousel class="event-carousel" v-model="activeEvent" hide-delimiters>
+  <v-carousel
+    class="event-carousel"
+    v-model="activeEvent"
+    hide-delimiters
+    :light="useLightTheme">
     <v-carousel-item v-for="(event, i) in events" :key="i">
       <event-card :event="event" :flat="true"/>
     </v-carousel-item>
@@ -39,9 +43,14 @@ export default {
       if (activeElement) {
         // compare active height to stored height and update accordingly
         const activeCard = activeElement.querySelector('.event-card');
-        const newHeight = Math.max(this.height, activeCard.offsetHeight, activeCard.clientHeight);
+        const newHeight = Math.max(this.height, activeCard.offsetHeight);
         if (newHeight > this.height) {
           this.height = newHeight;
+        }
+
+        // update height of current card if its lesser than saved height
+        if (activeCard.offsetHeight < this.height) {
+          activeCard.style.height = `${this.height}px`;
         }
       }
     },
