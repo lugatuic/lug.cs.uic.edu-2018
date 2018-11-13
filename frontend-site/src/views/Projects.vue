@@ -2,9 +2,10 @@
   <v-container grid-list-lg>
     <v-layout row>
       <v-flex>
-        <v-card>
-          Search area here?
-        </v-card>
+        <search-card
+          :allProjects="allProjects"
+          v-model="projects"
+        />
       </v-flex>
     </v-layout>
     <v-layout row wrap>
@@ -54,16 +55,25 @@
 
 <script>
 import { mockProjects } from '@/modules/mockData';
+import SearchCard from '@/components/Projects/SearchCard';
 
 export default {
+  components: {
+    SearchCard,
+  },
   computed: {
-    projects: () => new Array(12).fill(mockProjects[0]),
+    // a master list of all projects
+    allProjects: () => mockProjects,
   },
   data () {
     return {
       activeProject: null,
       showModal: false,
+      projects: [],
     };
+  },
+  created () {
+    this.projects = this.allProjects.slice();
   },
   mounted () {
     console.warn('using mock data for projects');
@@ -79,6 +89,9 @@ export default {
       if (!newValue) {
         this.activeProject = null;
       }
+    },
+    allProjects (newValue) {
+      this.projects = newValue.slice();
     },
   },
 };
