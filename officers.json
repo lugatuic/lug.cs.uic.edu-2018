@@ -1,11 +1,10 @@
-[
-  {
+[{
     "name": "Ben Maciorowski",
     "position": "PRESIDENT",
     "description": "Constantly dying",
     "github": "",
     "slack": "benbigmac",
-    "personal_site": "",
+    "personal_site": "https://benbigmac.github.io/",
     "image": "",
     "special_ability": "Heelys",
     "join_date": "",
@@ -70,7 +69,7 @@
     "graduating_semester": "FALL_2018"
   },
   {
-    "name": "Mathew (매튜) Kim",
+    "name": "Mathew Kim",
     "position": "VICE_PRESIDENT",
     "description": "VP",
     "github": "",
@@ -79,8 +78,8 @@
     "image": "",
     "special_ability": "",
     "join_date": "",
-    "term_start": "SUMMER_2018",
-    "term_end": "SPRING_2019",
+    "term_start": "SUMMER_2017",
+    "term_end": "SPRING_2018",
     "graduating_semester": ""
   },
   {
@@ -502,5 +501,5 @@
     "term_start": "SUMMER_2009",
     "term_end": "SPRING_2010",
     "graduating_semester": ""
-  },
+  }
 ]

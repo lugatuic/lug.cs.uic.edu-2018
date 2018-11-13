@@ -15,6 +15,7 @@ class Positions(Enum):
   VICE_PRESIDENT = "VICE_PRESIDENT"
   TREASURER = "TREASURER"
   SECRETARY = "SECRETARY"
+  TECHNICAL_OFFICER='TECHNICAL_OFFICER'
   MEMBER = "MEMBER"
 
 app = Flask(__name__, static_url_path='/static/', static_folder='frontend-site/dist')
