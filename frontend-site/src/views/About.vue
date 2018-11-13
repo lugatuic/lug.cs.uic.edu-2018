@@ -66,7 +66,7 @@
                 <v-flex>
                   <v-btn
                     flat block target="_blank" rel="noopener"
-                    href="mailto:lug@uic.edu">
+                    href="mailto:lug-uic-officers@googlegroups.com">
                     <v-icon left>email</v-icon>
                     Email
                   </v-btn>
