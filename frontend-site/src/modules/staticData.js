@@ -1,31 +1,45 @@
 // TODO: decide what stays here and what can be stored as a JSON file for the API to send
 export const utilitiesOffered = Object.freeze([
-  '3D Printing',
+  'Hardware',
+  '3-D Printing',
+  '3-D Scanning',
   'Raspberry Pi',
   'Arduino',
   'LUG API',
-  'Board Game Night',
+  'Board Games',
   'Ice Cream',
 ]);
 
 export const servicesOffered = Object.freeze([
   // TODO: fill in empty entries
   {
-    name: '3D Printing',
-    image: '',
-    description: 'LUG members enjoy many perks, including easy access to our 3D printer located in the ACM/LUG office. Watch your creations come alive for a minimal cost.',
-    url: 'https://lug.cs.uic.edu/3dprint/home',
-  },
-  {
-    name: 'Raspberry Pi',
-    image: '',
-    description: 'The Raspberry Pi single-board computer has been instrumental in encouraging student creativity, and LUG is here to help students gain access to one. We offer Raspberry Pi rentals for any student interested. A Raspberry Pi is powerful enough to run a full Linux installation and many student projects; ask an officer if it's the right choice for you.',
+    name: 'Hardware',
+    image: require("@/assets/whiteTux.png"),
+    description: 'From resistors to soldering irons, the LUG is stocked with a wide variety of hardware componants available for student use.',
     url: '',
   },
   {
+    name: '3D Printing',
+    image: '',
+    description: 'Becoming a LUG member brings many perks such as having easy access to our 3D printer located in the ACM/LUG office. Members can watch their creations come alive for minimal cost.',
+    url: 'https://lug.cs.uic.edu/3dprint/home',
+  },
+  {
+    name: '3-D Scanning',
+    image: '',
+    description: 'A 3-D scanner is a device that scans and analyses objects and returns a 3-D 360° image. Available for use in the LUG office, students will have access to a rare 3-D technology, which could be used along side the 3-D scanner.',
+    url: 'https://lug.cs.uic.edu/3dprint/home',
+  },
+  {
+  name: 'Raspberry Pi',
+  image: '',
+  description: 'The Raspberry Pi, single-board computer, has been instrumental in encouraging student creativity and LUG is here to help students gain access to one. We offer Raspberry Pi rentals for any student interested. A Raspberry Pi is powerful enough to run a full Linux installation and many student projects; ask an officer if it\'s the right choice for you.',
+  url: '',
+    },
+  {
     name: 'Arduino',
     image: '',
-    description: 'If your looking for a microcontroller but dont want to buy your own, LUG has you covered. In addition to the Rasberry Pi, LUG offers Arduino rentals.',
+    description: 'Arduino was born to be an easy tool for fast prototyping, aimed at students without a background in electronics and programming. If you are in need of an Arduino for a class or simply want to test out the technology, LUG has you covered.',
     url: '',
   },
   {
@@ -35,17 +49,17 @@ export const servicesOffered = Object.freeze([
     url: '',
   },
   {
-    name: 'Board Game Night',
+    name: 'Board Games',
     image: '',
-    description: 'One Friday a month, LUG hosts a board game night. If you need a break from the stress of college and want to participate in someting fun, gamenight is the thing to do. Sometimes the game nights are also accompanied by pizza.',
+    description: 'Need a break a stressful week of classes? Pick up a board game, located in the LUG office, and grab some friends. There are plenty of games to choose from.',
     url: '',
   },
   {
     name: 'Ice Cream',
     image: '',
-    description: 'Ice cream, being an important part of a students diet, is available for purchase in the LUG office.',
+    description: 'Ice cream, being an important part of a students diet, is available in the LUG office for a mandatory donation.',
     url: '',
   },
-  
-  
+
+
 ])
