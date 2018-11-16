@@ -232,25 +232,30 @@ def getOfficers():
   # Convert Officer objects back to dictionaries before returning
   return jsonify([x.__dict__ for x in officers])
 
-#I'm keeping these global variables here for now so it's easier to determine that it goes with the events api when the pieces of the api are inevitably split up
-ev = []
-eventsCached = datetime.now()
+#I'm keeping these global variables here for now
+# so it's easier to determine that it goes with the events api
+# when the pieces of the api are inevitably split up
+EV = []
+EVENTS_CACHED = datetime.now()
 @app.route('/api/events')
 def getEvents():
+  """
+  Route for /api/events
+  """
   calurl = 'https://calendar.google.com/calendar/ical/ca149os3pmnh0dcopr1jn2negg%40group.calendar.google.com/public/basic.ics'
   dtstrformat = '%Y-%m-%dT%H:%M:%S.%fZ'
-  global ev
-  global eventsCached
+  global EV
+  global EVENTS_CACHED
 
-  if (ev == []) or (datetime.now() - eventsCached >= timedelta(hours=1)):
+  if (EV == []) or (datetime.now() - EVENTS_CACHED >= timedelta(hours=1)):
     gcal = Calendar.from_ical(requests.get(calurl).content)
-    ev = []
-    for comp in [x for x in gcal.walk() if x.name=="VEVENT"]:
-      ev.append({'summary': comp.decoded('SUMMARY').decode('UTF-8'), 
-        'timeStart': comp.decoded('DTSTART').strftime(dtstrformat),
-        'timeEnd': comp.decoded('DTEND').strftime(dtstrformat),
-        'location': comp.decoded('LOCATION').decode('UTF-8'),
-        'description': comp.decoded('DESCRIPTION').decode('UTF-8')})
-    eventsCached = datetime.now()
-    
-  return jsonify(ev)
+    EV = []
+    for comp in [x for x in gcal.walk() if x.name == "VEVENT"]:
+      EV.append({'summary': comp.decoded('SUMMARY').decode('UTF-8'),
+                 'timeStart': comp.decoded('DTSTART').strftime(dtstrformat),
+                 'timeEnd': comp.decoded('DTEND').strftime(dtstrformat),
+                 'location': comp.decoded('LOCATION').decode('UTF-8'),
+                 'description': comp.decoded('DESCRIPTION').decode('UTF-8')})
+    EVENTS_CACHED = datetime.now()
+
+  return jsonify(EV)
