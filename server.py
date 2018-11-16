@@ -237,18 +237,18 @@ def getOfficers():
 # when the pieces of the api are inevitably split up
 EV = []
 EVENTS_CACHED = datetime.now()
-@app.route('/api/events')
-def getEvents():
+def cacheEvents():
   """
-  Route for /api/events
+  Caches the event calendar.
   """
   calurl = 'https://calendar.google.com/calendar/ical/ca149os3pmnh0dcopr1jn2negg%40group.calendar.google.com/public/basic.ics'
   dtstrformat = '%Y-%m-%dT%H:%M:%S.%fZ'
-  global EV
-  global EVENTS_CACHED
+  global EV, EVENTS_CACHED
 
-  if (EV == []) or (datetime.now() - EVENTS_CACHED >= timedelta(hours=1)):
-    gcal = Calendar.from_ical(requests.get(calurl).content)
+  try:
+    cal_request = requests.get(calurl)
+    cal_request.raise_for_status() #requests doesn't raise HTTPError on its own
+    gcal = Calendar.from_ical(cal_request.content)
     EV = []
     for comp in [x for x in gcal.walk() if x.name == "VEVENT"]:
       EV.append({'summary': comp.decoded('SUMMARY').decode('UTF-8'),
@@ -257,5 +257,16 @@ def getEvents():
                  'location': comp.decoded('LOCATION').decode('UTF-8'),
                  'description': comp.decoded('DESCRIPTION').decode('UTF-8')})
     EVENTS_CACHED = datetime.now()
+  except requests.HTTPError:
+    print("ERROR! Failed to download calendar file!")
 
+@app.route('/api/events')
+def getEvents():
+  """
+  Route for /api/events
+  """
+  global EV, EVENTS_CACHED
+
+  if (EV == []) or (datetime.now() - EVENTS_CACHED >= timedelta(hours=1)):
+    cacheEvents()
   return jsonify(EV)
