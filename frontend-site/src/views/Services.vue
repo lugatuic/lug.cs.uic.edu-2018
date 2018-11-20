@@ -9,7 +9,7 @@
               <v-flex xs5>
                 <div style="border: 1px solid white; height: 100%;">
                   <!-- TODO: turn into image/svg tag -->
-                  {{ service.image || 'No image specified' }}
+                <img v-bind:src=service.image>
                 </div>
               </v-flex>
               <v-flex xs7 class="pr-3">
