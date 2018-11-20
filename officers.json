@@ -42,7 +42,7 @@
   },
   {
     "name": "Joshua Castor",
-    "position": "Technical Officer",
+    "position": "TECHNICAL_OFFICER",
     "description": "A young man with a bright future but for some strange reason he likes Javascript",
     "github": "",
     "slack": "Joshua Castor",
@@ -140,7 +140,7 @@
   },
   {
     "name": "Mathew (매튜) Kim",
-    "position": "Secretary",
+    "position": "SECRETARY",
     "description": "",
     "github": "",
     "slack": "",
@@ -238,7 +238,7 @@
   },
   {
     "name": "Sunil Rao",
-    "position": "Secretary",
+    "position": "SECRETARY",
     "description": "",
     "github": "",
     "slack": "",
@@ -294,7 +294,7 @@
   },
   {
     "name": "Mathew Dumford",
-    "position": "Secretary",
+    "position": "SECRETARY",
     "description": "",
     "github": "",
     "slack": "",
@@ -350,7 +350,7 @@
   },
   {
     "name": "Ashley Riley",
-    "position": "Secretary",
+    "position": "SECRETARY",
     "description": "",
     "github": "",
     "slack": "",
