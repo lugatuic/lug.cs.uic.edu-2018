@@ -83,6 +83,7 @@
           <v-card-title primary-title>
             <h1 class="title">Administration History</h1>
           </v-card-title>
+          <v-divider/>
           <v-card-text v-if="isLoading" class="text-xs-center">
             <v-progress-circular indeterminate/>
             <h1 class="subheading">Loading Officer Data...</h1>
@@ -108,6 +109,11 @@
 
 <script>
 import { mapActions } from 'vuex';
+import {
+  positionOrder,
+  convertSemesterToMonthStart,
+  getNextSemester,
+} from '@/modules/officers';
 import OfficerListing from '@/components/Home/OfficerListing';
 
 export default {
@@ -128,57 +134,26 @@ export default {
 
       // sort by oldest to newest (by term_start)
       const sortedOfficers = officers.slice()
-        .sort((a, b) => this.convertSemesterToMonthStart(a.term_start) - this.convertSemesterToMonthStart(b.term_start));
+        .sort((a, b) => convertSemesterToMonthStart(a.term_start) - convertSemesterToMonthStart(b.term_start));
 
       const startSemester = sortedOfficers[0].term_start;
-      const endSemester = this.getNextSemester(sortedOfficers[sortedOfficers.length - 1].term_start);
+      const endSemester = getNextSemester(sortedOfficers[sortedOfficers.length - 1].term_start);
 
       // iteratively go through each semester and filter officers by semester
-      for (let semester = startSemester; semester !== endSemester; semester = this.getNextSemester(semester)) {
-        const currentSemesterDate = this.convertSemesterToMonthStart(semester);
+      for (let semester = startSemester; semester !== endSemester; semester = getNextSemester(semester)) {
+        const currentSemesterDate = convertSemesterToMonthStart(semester);
 
-        // get officers that serve by each term
+        // get officers that serve by each term sorted by position
         this.officersBySemester[semester] = sortedOfficers.filter(officer => {
-          const startTerm = this.convertSemesterToMonthStart(officer.term_start);
-          const endTerm = this.convertSemesterToMonthStart(officer.term_end);
+          const startTerm = convertSemesterToMonthStart(officer.term_start);
+          const endTerm = convertSemesterToMonthStart(officer.term_end);
           return startTerm <= currentSemesterDate && endTerm >= currentSemesterDate;
-        }).reverse(); // show newest first
+        })
+        .sort((a, b) => positionOrder.indexOf(a.position) - positionOrder.indexOf(b.position));
         this.semesters.push(semester);
       }
 
       this.semesters.reverse(); // show newest first
-    },
-    // converts a given semester to the date of the first month of the term
-    convertSemesterToMonthStart (semester = 'FALL_2018') {
-      const [term, year] = semester.split('_');
-      let month;
-      if (term === 'SPRING') {
-        month = 'January';
-      } else if (term === 'SUMMER') {
-        month = 'June';
-      } else {
-        month = 'September';
-      }
-
-      // first of the month
-      // not 100% accurate, but good enough for simple sorting/comparison purposes
-      return new Date(`${month} 1 ${year}`);
-    },
-    getNextSemester (semester = 'FALL_2018') {
-      const [term, year] = semester.split('_');
-      let nextTerm;
-      if (term === 'FALL') {
-        nextTerm = 'SPRING';
-      } else if (nextTerm === 'SPRING') {
-        nextTerm = 'SUMMER';
-      } else {
-        nextTerm = 'FALL';
-      }
-
-      return [
-        nextTerm,
-        term === 'FALL' ? (+year + 1) : year
-      ].join('_');
     },
   },
   async mounted () {

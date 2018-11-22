@@ -4,7 +4,7 @@ export const positionOrder = Object.freeze([
   'VICE_PRESIDENT',
   'TREASURER',
   'SECRETARY',
-  'TECHINCAL_OFFICER',
+  'TECHNICAL_OFFICER',
   'MEMBER',
 ]);
 
