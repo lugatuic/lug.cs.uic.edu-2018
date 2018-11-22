@@ -47,7 +47,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { getCurrentSemester } from '@/modules/officers';
 import LugBannerSvg from '@/components/LugBannerSvg';
 import EventCarousel from '@/components/Home/EventCarousel';
 import OfficerListing from '@/components/Home/OfficerListing';
@@ -61,7 +61,7 @@ export default {
     UtilitiesListing,
   },
   computed: {
-    ...mapGetters('officers', ['currentSemester']),
+    currentSemester: () => getCurrentSemester(),
   },
 };
 </script>
