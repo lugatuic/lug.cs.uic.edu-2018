@@ -32,7 +32,7 @@
         <h1 class="title">Main Officers</h1>
       </v-flex>
       <v-flex xs12>
-        <officer-listing/>
+        <officer-listing :semester="currentSemester"/>
       </v-flex>
     </v-layout>
     <v-layout row wrap>
@@ -47,6 +47,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import LugBannerSvg from '@/components/LugBannerSvg';
 import EventCarousel from '@/components/Home/EventCarousel';
 import OfficerListing from '@/components/Home/OfficerListing';
@@ -58,6 +59,9 @@ export default {
     EventCarousel,
     OfficerListing,
     UtilitiesListing,
+  },
+  computed: {
+    ...mapGetters('officers', ['currentSemester']),
   },
 };
 </script>
