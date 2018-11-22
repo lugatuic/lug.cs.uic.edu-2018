@@ -19,7 +19,6 @@
           <v-card-text>Loading officer data...</v-card-text>
         </v-card>
     </v-flex>
-
   </v-layout>
 </template>
 

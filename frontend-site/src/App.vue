@@ -47,9 +47,11 @@ html {
 
 .theme--dark {
   --card-default-background-color: #424242;
+  --card-default-background-color--darken-1: #212121; /* grey darken-4 */
 }
 
-.theme-light {
+.theme--light {
   --card-default-background-color: #fff;
+  --card-default-background-color--darken-1: #f5f5f5; /* grey lighten-4 */
 }
 </style>

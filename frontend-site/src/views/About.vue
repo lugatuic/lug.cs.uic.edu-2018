@@ -79,8 +79,72 @@
     </v-layout>
     <v-layout>
       <v-flex>
-        listing of previous officers by semester goes here; potentially reuse officer listing component
+        <v-card>
+          <v-card-title primary-title>
+            <h1 class="title">Administration History</h1>
+          </v-card-title>
+          <v-card-text v-if="isLoading" class="text-xs-center">
+            <v-progress-circular indeterminate/>
+            <h1 class="subheading">Loading Officer Data...</h1>
+          </v-card-text>
+          <v-expansion-panel v-else id="administration-history-list">
+            <v-expansion-panel-content
+              v-for="semester in semesters"
+              :key="semester"
+              lazy>
+              <h1 class="title" slot="header">{{ semester }}</h1>
+              <v-card-text>
+                <v-container fluid class="pa-0" grid-list-md>
+                  <officer-listing :inputOfficers="officersBySemester[semester]"/>
+                </v-container>
+              </v-card-text>
+            </v-expansion-panel-content>
+          </v-expansion-panel>
+        </v-card>
       </v-flex>
     </v-layout>
   </v-container>
 </template>
+
+<script>
+import { mapActions } from 'vuex';
+import OfficerListing from '@/components/Home/OfficerListing';
+
+export default {
+  components: {
+    OfficerListing,
+  },
+  data () {
+    return {
+      officersBySemester: {},
+      semesters: [],
+      isLoading: true,
+    };
+  },
+  methods: {
+    ...mapActions('officers', ['updateData']),
+    async initializeOfficerData () {
+      const officers = await this.updateData();
+
+      // TODO: split officers by semester
+      this.officersBySemester.FALL_2018 = officers.slice();
+      this.semesters = ['FALL_2018'];
+    },
+  },
+  async mounted () {
+    try {
+      await this.initializeOfficerData();
+    } catch (err) {
+      console.error(err);
+    } finally {
+      this.isLoading = false;
+    }
+  },
+};
+</script>
+
+<style lang="scss">
+#administration-history-list .officer-card {
+  background-color: var(--card-default-background-color--darken-1)!important;
+}
+</style>
