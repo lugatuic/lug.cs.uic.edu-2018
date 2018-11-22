@@ -5,6 +5,7 @@ import Projects from '@/views/Projects';
 import Wiki from '@/views/Wiki';
 import Events from '@/views/Events';
 import Services from '@/views/Services';
+import OfficePolicy from '@/views/OfficePolicy';
 
 Vue.use(Router);
 
@@ -43,6 +44,11 @@ export default new Router({
       path: '/services',
       name: 'Services',
       component: Services,
+    },
+    {
+      path: '/office-policy',
+      name: 'Office Policy',
+      component: OfficePolicy,
     },
   ],
 });

@@ -13,10 +13,13 @@
           </v-card-text>
           <v-card-actions>
             <v-btn
-            href="https://github.com/lugatuic/lug-docs/blob/master/rfc0000-lug-constitution.md"
-            flat target="_blank"
-            rel="noopener">
+              href="https://github.com/lugatuic/lug-docs/blob/master/rfc0000-lug-constitution.md"
+              flat target="_blank"
+              rel="noopener">
               Constitution
+            </v-btn>
+            <v-btn flat to="/office-policy">
+              Office Policy
             </v-btn>
           </v-card-actions>
         </v-card>
