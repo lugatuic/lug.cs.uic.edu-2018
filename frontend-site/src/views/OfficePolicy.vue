@@ -24,7 +24,7 @@
           </v-card-title>
           <v-card-text>
             <span class="d-block">
-              The LUG office is a shared resource and thus, we have many people coming in any time during the day. While you are free to use the desks and chairs of the ACM, you may not 'hog' a seat. You must give up your seat to another person that wants to do any of the following:
+              The LUG office is a shared resource and thus, we have many people coming in any time during the day. While you are free to use the desks and chairs of the LUG office, you may not 'hog' a seat. You must give up your seat to another person that wants to do any of the following:
             </span>
             <ul>
               <li>Study</li>
@@ -33,7 +33,7 @@
               <li>Educating oneself (reading articles, newspapers, etc) NOT comics, reddit, digg, etc</li>
               <li>Developing</li>
             </ul>
-            <span class="d-block">The ACM has no assigned seats and therefore, you must pick up after yourself when you leave. If you are to leave momentarily, please leave a note so nobody takes your seat.</span>
+            <span class="d-block">The LUG office has no assigned seats and therefore, you must pick up after yourself when you leave. If you are to leave momentarily, please leave a note so nobody takes your seat.</span>
           </v-card-text>
         </v-card>
       </v-flex>
