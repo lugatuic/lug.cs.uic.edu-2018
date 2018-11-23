@@ -11,6 +11,7 @@ class Positions(Enum):
   """
   List of LUG Officer positions.
   """
+  # NOTE: remember to update ordering in frontend project
   PRESIDENT = "PRESIDENT"
   VICE_PRESIDENT = "VICE_PRESIDENT"
   TREASURER = "TREASURER"

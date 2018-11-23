@@ -19,7 +19,6 @@
           <v-card-text>Loading officer data...</v-card-text>
         </v-card>
     </v-flex>
-
   </v-layout>
 </template>
 
@@ -28,25 +27,19 @@ import OfficerCard from '@/components/OfficerCard';
 import lugApi from '@/modules/LugApi';
 
 export default {
+  props: {
+    // specify a semester to initiate a remote query on component mount
+    semester: {
+      type: String,
+      default: '',
+    },
+    inputOfficers: {
+      type: Array,
+      default: () => [],
+    },
+  },
   components: {
     OfficerCard,
-  },
-  computed: {
-    // TODO: factor out if other things need this
-    currentSemester () {
-      const currentDate = new Date();
-      const currentMonth = currentDate.getMonth() + 1; // getMonth is 0 indexed, so add 1
-      const currentYear = currentDate.getUTCFullYear();
-      let currentSemester = '';
-      if (currentMonth <= 5) { // up to May
-        currentSemester = 'SPRING';
-      } else if (currentMonth <= 8) { // up to August
-        currentSemester = 'SUMMER';
-      } else {
-        currentSemester = 'FALL';
-      }
-      return `${currentSemester}_${currentYear}`;
-    },
   },
   data: () => ({
     officers: [],
@@ -54,9 +47,13 @@ export default {
   }),
   async mounted () {
     try {
-      this.officers = await lugApi.getOfficers({
-        semester: this.currentSemester,
-      });
+      if (this.semester) {
+        this.officers = await lugApi.getOfficers({
+          semester: this.semester,
+        });
+      } else {
+        this.officers = this.inputOfficers.slice();
+      }
     } catch (err) {
       console.error(err);
     } finally {
