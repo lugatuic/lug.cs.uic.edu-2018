@@ -10,8 +10,8 @@
                 <div style="border: 1px solid white; height: 100%;">
                   <!-- TODO: turn into image/svg tag -->
 
-                <img v-if="service.image" v-bind:src=service.image>
-                <p v-else>No Image Provided</p>
+                <v-img :src="service.image"></v-img>
+                <!-- <p v-else>No Image Provided</p> -->
                 </div>
               </v-flex>
               <v-flex xs7 class="pr-3">
