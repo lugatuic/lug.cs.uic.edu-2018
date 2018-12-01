@@ -8,10 +8,7 @@
             <v-layout row>
               <v-flex xs5>
                 <div style="border: 1px solid white; height: 100%;">
-                  <!-- TODO: turn into image/svg tag -->
-
                 <v-img :src="service.image"></v-img>
-                <!-- <p v-else>No Image Provided</p> -->
                 </div>
               </v-flex>
               <v-flex xs7 class="pr-3">

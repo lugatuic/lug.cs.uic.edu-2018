@@ -12,22 +12,21 @@ export const utilitiesOffered = Object.freeze([
 ]);
 
 export const servicesOffered = Object.freeze([
-  // TODO: fill in empty entries
   {
     name: 'Hardware',
-    image: require("@/assets/Hardware.png"),
+    image: require("@/assets/Hardware.jpg"),
     description: 'From resistors to soldering irons, the LUG is stocked with a wide variety of hardware componants available for student use.',
     url: '',
   },
   {
-    name: '3D Printing',
-    image: require("@/assets/3DPrinter.png"),
-    description: 'Becoming a LUG member brings many perks such as having easy access to our 3D printer located in the ACM/LUG office. Members can watch their creations come alive for minimal cost.',
+    name: '3-D Printing',
+    image: require("@/assets/3DPrinter.jpg"),
+    description: 'Becoming a LUG member brings many perks such as having easy access to our 3-D printer located in the ACM/LUG office. Members can watch their creations come alive for minimal cost.',
     url: 'https://lug.cs.uic.edu/3dprint/home',
   },
   {
     name: '3-D Scanning',
-    image: require("@/assets/3DScanner.png"),
+    image: require("@/assets/3DScanner.jpg"),
     description: 'A 3-D scanner is a device that scans and analyses objects and returns a 3-D 360° image. Available for use in the LUG office, students will have access to a rare 3-D technology, which could be used along side the 3-D scanner.',
     url: 'https://lug.cs.uic.edu/3dprint/home',
   },
@@ -45,7 +44,7 @@ export const servicesOffered = Object.freeze([
   },
   {
     name: 'LUG API',
-    image: require("@/assets/API.png"),
+    image: require("@/assets/API.jpg"),
     description: 'LUG is determined to present students with tools that will help them on their road to success, which is why we made our API open to anyone, presenting students with the opportunity to see how this technology works.',
     url: '',
   },
@@ -57,13 +56,13 @@ export const servicesOffered = Object.freeze([
   },
   {
     name: 'Game Systems',
-    image: require("@/assets/Sega.png"),
-    description: 'If your feeling nostalgic, you can try out the sega or the various other early gaming systems found in the LUG office.',
+    image: require("@/assets/Sega.jpg"),
+    description: 'If you\'re feeling nostalgic, you can try out the SEGA or the various other retro gaming systems found in the LUG office.',
     url: '',
   },
   {
     name: 'Ice Cream',
-    image: require("@/assets/Icecream.png"),
+    image: require("@/assets/Icecream.jpg"),
     description: 'Ice cream, being an important part of a students diet, is available in the LUG office for a mandatory donation.',
     url: '',
   },
