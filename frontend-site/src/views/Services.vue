@@ -5,7 +5,10 @@
         <!-- TODO: refactor separate component? -->
         <v-card class="ma-2">
           <v-container fluid class="pa-0">
-            <v-layout row>
+            <v-layout row align-center>
+              <v-flex xs5>
+                <v-img :src="service.image"/>
+              </v-flex>
               <v-flex xs5>
                 <div style="border: 1px solid white; height: 100%;">
                 <v-img :src="service.image"></v-img>
