@@ -1,4 +1,3 @@
-// TODO: decide what stays here and what can be stored as a JSON file for the API to send
 export const utilitiesOffered = Object.freeze([
   'Hardware',
   '3-D Printing',
@@ -15,7 +14,7 @@ export const servicesOffered = Object.freeze([
   {
     name: 'Hardware',
     image: require("@/assets/Hardware.jpg"),
-    description: 'From resistors to soldering irons, the LUG is stocked with a wide variety of hardware componants available for student use.',
+    description: 'From resistors to soldering irons, the LUG is stocked with a wide variety of hardware components available for student use.',
     url: '',
   },
   {
@@ -63,9 +62,7 @@ export const servicesOffered = Object.freeze([
   {
     name: 'Ice Cream',
     image: require("@/assets/Icecream.jpg"),
-    description: 'Ice cream, being an important part of a students diet, is available in the LUG office for a mandatory donation.',
+    description: 'Ice cream, being an important part of a student\'s diet, is available in the LUG office for a mandatory donation.',
     url: '',
   },
-
-
 ])

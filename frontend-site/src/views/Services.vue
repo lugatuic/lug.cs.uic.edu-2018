@@ -2,14 +2,11 @@
   <v-container grid-list-lg>
     <v-layout row wrap>
       <v-flex xs12 sm6 md4 v-for="(service, i) in services" :key="i">
-        <!-- TODO: refactor separate component? -->
         <v-card class="ma-2">
           <v-container fluid class="pa-0">
-            <v-layout row>
+             <v-layout row align-center>
               <v-flex xs5>
-                <div style="border: 1px solid white; height: 100%;">
                 <v-img :src="service.image"></v-img>
-                </div>
               </v-flex>
               <v-flex xs7 class="pr-3">
                 <h1 class="title">{{ service.name }}</h1>
