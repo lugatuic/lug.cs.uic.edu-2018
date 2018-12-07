@@ -6,6 +6,7 @@ export const utilitiesOffered = Object.freeze([
   'Arduino',
   'LUG API',
   'Board Games',
+  'Minecraft',
   'Game Systems',
   'Ice Cream',
 ]);
@@ -51,6 +52,12 @@ export const servicesOffered = Object.freeze([
     name: 'Board Games',
     image: require("@/assets/BoardG.jpg"),
     description: 'Need a break a stressful week of classes? Pick up a board game, located in the LUG office, and grab some friends. There are plenty of games to choose from.',
+    url: '',
+  },
+  {
+    name: 'Minecraft',
+    image: require("@/assets/minecrat.jpg"),
+    description: 'If you still play this iconic game, come join the LUG Minecraft server. You can even check the server status or which members are online.',
     url: '',
   },
   {
