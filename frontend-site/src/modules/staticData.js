@@ -56,9 +56,9 @@ export const servicesOffered = Object.freeze([
   },
   {
     name: 'Minecraft',
-    image: require("@/assets/minecrat.jpg"),
-    description: 'If you still play this iconic game, come join the LUG Minecraft server. You can even check the server status or which members are online.',
-    url: '',
+    image: require("@/assets/minecraft.jpg"),
+    description: 'If you still play this iconic game, come join the LUG Minecraft server. To learn more about joing the server, please select the  button below to be connected to our #game slack channel.',
+    url: 'https://lugatuic.slack.com/messages/CD4MNAJK0',
   },
   {
     name: 'Game Systems',
