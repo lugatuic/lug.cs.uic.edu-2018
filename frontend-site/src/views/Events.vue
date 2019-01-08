@@ -43,7 +43,7 @@ export default {
     ...mapState('events', {
       allEvents: 'data',
     }),
-    eventsPerPage: () => 15,
+    eventsPerPage: () => 18,
     numPages () {
       return Math.ceil(this.events.length / this.eventsPerPage);
     },

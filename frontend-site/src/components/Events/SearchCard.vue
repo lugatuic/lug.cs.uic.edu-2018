@@ -84,16 +84,32 @@ export default {
     sendFilteredList (newList = []) {
       this.$emit('input', newList);
     },
+    applyFilters (input = []) {
+      const { textQuery } = this.filterOptions;
+      return input.filter(event => {
+        const fitsTextQuery = !textQuery ||
+          (event.summary && event.summary.toLowerCase().includes(textQuery.toLowerCase())) ||
+          (event.description && event.description.toLowerCase().includes(textQuery.toLowerCase()));
+
+        return fitsTextQuery;
+      });
+    },
     applySorts (input = []) {
       const sortFunction = this.sorts[this.sortOptions.type] || this.sorts.Name;
       return input.slice().sort((a, b) => sortFunction(a, b, this.sortOptions.isAscending));
     },
     applyChangesAndUpdate: debounce(function () {
-      this.sendFilteredList(this.applySorts(this.allEvents));
+      this.sendFilteredList(this.applySorts(this.applyFilters(this.allEvents)));
     }, 500),
   },
   watch: {
     sortOptions: {
+      deep: true,
+      handler () {
+        this.applyChangesAndUpdate();
+      },
+    },
+    filterOptions: {
       deep: true,
       handler () {
         this.applyChangesAndUpdate();
