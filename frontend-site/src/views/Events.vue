@@ -66,5 +66,11 @@ export default {
     await this.updateData();
     this.events = this.allEvents.slice();
   },
+  watch: {
+    events () {
+      // reset page count on new event listing
+      this.currentPage = 1;
+    },
+  },
 };
 </script>
