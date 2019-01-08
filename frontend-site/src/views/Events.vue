@@ -2,7 +2,9 @@
   <v-container grid-list-lg>
     <v-layout row>
       <v-flex>
-        Search Card here
+        <search-card
+          :allEvents="allEvents"
+          v-model="events"/>
       </v-flex>
     </v-layout>
     <v-layout row wrap>
@@ -29,15 +31,17 @@
 <script>
 import { mapState, mapActions } from 'vuex';
 import EventCard from '@/components/Events/EventCard';
+import SearchCard from '@/components/Events/SearchCard';
 
 export default {
   components: {
     EventCard,
+    SearchCard,
   },
   computed: {
     ...mapState(['useLightTheme']),
     ...mapState('events', {
-      events: 'data',
+      allEvents: 'data',
     }),
     eventsPerPage: () => 15,
     numPages () {
@@ -55,10 +59,12 @@ export default {
   data () {
     return {
       currentPage: 1,
+      events: [],
     };
   },
   async mounted () {
     await this.updateData();
+    this.events = this.allEvents.slice();
   },
 };
 </script>
