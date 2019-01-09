@@ -8,7 +8,7 @@ from flask import Flask, jsonify, request
 from flask_cors import CORS
 from icalendar import Calendar
 import requests #using this to yank the ics file from google calendar
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone, date
 
 class Positions(Enum):
   """
@@ -251,11 +251,14 @@ def cacheEvents():
     gcal = Calendar.from_ical(cal_request.content)
     EV = []
     for comp in [x for x in gcal.walk() if x.name == "VEVENT"]:
-      EV.append({'summary': comp.decoded('SUMMARY').decode('UTF-8'),
-                 'timeStart': comp.decoded('DTSTART').strftime(dtstrformat),
-                 'timeEnd': comp.decoded('DTEND').strftime(dtstrformat),
-                 'location': comp.decoded('LOCATION').decode('UTF-8'),
-                 'description': comp.decoded('DESCRIPTION').decode('UTF-8')})
+      endtime = comp.decoded('DTEND')
+      print(endtime)
+      if datetime.today() <= datetime(endtime.year, endtime.month, endtime.day):
+        EV.append({'summary': comp.decoded('SUMMARY').decode('UTF-8'),
+                   'timeStart': comp.decoded('DTSTART').strftime(dtstrformat),
+                   'timeEnd': endtime.strftime(dtstrformat),
+                   'location': comp.decoded('LOCATION').decode('UTF-8'),
+                   'description': comp.decoded('DESCRIPTION').decode('UTF-8')})
     EVENTS_CACHED = datetime.now()
   except requests.HTTPError:
     print("ERROR! Failed to download calendar file!")
