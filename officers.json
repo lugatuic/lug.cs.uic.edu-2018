@@ -56,7 +56,7 @@
   },
   {
     "name": "Brent Yurek",
-    "position": "SENIOR TECHNICAL_OFFICER",
+    "position": "SENIOR_TECHNICAL_OFFICER",
     "description": "I run Arch btw",
     "github": "BreadYogurt",
     "slack": "BreadYogurt",
@@ -72,7 +72,7 @@
     "name": "Rashad",
     "position": "TECHNICAL_OFFICER",
     "description": "",
-    "github": "...",
+    "github": "",
     "slack": "CTG",
     "personal_site": "",
     "image": "",
