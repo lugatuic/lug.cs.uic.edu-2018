@@ -1,4 +1,4 @@
-import { mockOfficers, mockEvents } from '@/modules/mockData';
+import { mockOfficers, mockEvents, mockProjects } from '@/modules/mockData';
 import { isDebugMode } from '@/modules/utils';
 
 export class LugApi {
@@ -36,21 +36,25 @@ export class LugApi {
     .join('?');
   }
 
+  _defaultApiGet (baseApiUrl = '/api/someendpoint', params = {}, mockResult) {
+    const apiUrl = this._toApiUrl(baseApiUrl, params);
+    this._checkParamsForMock(params, apiUrl);
+    return !params.isMock ?
+      this._getJson(this.generateUrl(apiUrl)) :
+      Promise.resolve(mockResult);
+  }
+
   async getOfficers (params = {}) {
     // TODO: error checking for semester or leave it server side (i.e. server returns 4xx error)?
-    const apiUrl = this._toApiUrl('/api/officers', params);
-    this._checkParamsForMock(params, apiUrl);
-    return !params.isMock
-      ? this._getJson(this.generateUrl(apiUrl))
-      : Promise.resolve(mockOfficers);
+    return this._defaultApiGet('/api/officers', params, mockOfficers);
   }
 
   async getEvents (params = {}) {
-    const apiUrl = this._toApiUrl('/api/events', params);
-    this._checkParamsForMock(params, apiUrl);
-    return !params.isMock
-      ? this._getJson(this.generateUrl(apiUrl))
-      : Promise.resolve(mockEvents);
+    return this._defaultApiGet('/api/events', params, mockEvents);
+  }
+
+  async getProjects (params = {}) {
+    return this._defaultApiGet('/api/projects', params, mockProjects);
   }
 }
 
