@@ -231,3 +231,30 @@ def getOfficers():
 
   # Convert Officer objects back to dictionaries before returning
   return jsonify([x.__dict__ for x in officers])
+
+
+@app.route('/api/projects', methods=['GET'])
+def getProjects():
+    class Projects():
+      """
+      Represents Officer objects from the json file
+      Used by json.load() - see 'object_hook' in the Python docs
+      """
+      def __init__(self, d):
+        # d is the dictionary passed by json.load()
+        self.name = str(d['name'])
+        self.status = d['status']
+        self.description = str(d['description'])
+        self.smallImage = d['smallImage']
+        self.largeImage = d['largeImage']
+        self.wikiLink = d['wikiLink']
+        self.githubLink = d['githubLink']
+        self.startDate = d['startDate']
+        self.projectLead = str(d['projectLead'])
+
+    # Get projects from json file
+    with open('projects.json') as projects_file:
+      projects = json.load(projects_file, object_hook=Projects)
+
+    # Convert project objects back to dictionaries before returning
+    return jsonify([x.__dict__ for x in projects])
