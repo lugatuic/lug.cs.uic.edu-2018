@@ -4,7 +4,7 @@
     "status": "active",
     "description": "Redesign of the LUG Website for the modern era, and updated needs from it. ",
     "smallImage": "",
-    "largeImage": "",
+    "largeImage": "/assets/webTeam.jpg",
     "wikiLink": "https://lug.cs.uic.edu/wiki/doku.php?id=webredesign2018",
     "githubLink": "https://github.com/lugatuic/lug.cs.uic.edu-2018",
     "startDate": "9/12/2018",
