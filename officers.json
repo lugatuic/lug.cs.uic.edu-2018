@@ -41,6 +41,48 @@
     "graduating_semester": "SPRING_2021"
   },
   {
+    "name": "Jacob Raffe",
+    "position": "SECRETARY",
+    "description": "Please fund us",
+    "github": "jakeraffe",
+    "slack": "binjamin",
+    "personal_site": "",
+    "image": "",
+    "special_ability": "",
+    "join_date": "",
+    "term_start": "SPRING_2019",
+    "term_end": "SPRING_2020",
+    "graduating_semester": "SPRING_2020"
+  },
+  {
+    "name": "Brent Yurek",
+    "position": "SENIOR_TECHNICAL_OFFICER",
+    "description": "I run Arch btw",
+    "github": "BreadYogurt",
+    "slack": "BreadYogurt",
+    "personal_site": "",
+    "image": "",
+    "special_ability": "Yogurt",
+    "join_date": "",
+    "term_start": "SPRING_2018",
+    "term_end": "SPRING_2020",
+    "graduating_semester": "SPRING_2020"
+  },
+  {
+    "name": "Rashad",
+    "position": "TECHNICAL_OFFICER",
+    "description": "",
+    "github": "",
+    "slack": "CTG",
+    "personal_site": "",
+    "image": "",
+    "special_ability": "",
+    "join_date": "",
+    "term_start": "SPRING_2018",
+    "term_end": "SPRING_2020",
+    "graduating_semester": "SPRING_2020"
+  },
+  {
     "name": "Joshua Castor",
     "position": "TECHNICAL_OFFICER",
     "description": "A young man with a bright future but for some strange reason he likes Javascript",
