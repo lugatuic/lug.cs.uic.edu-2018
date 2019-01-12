@@ -70,5 +70,26 @@ class Officer():
     return self.term_start_id() < range_end_id and self.term_end_id() > range_start_id
 
   def is_current_student(self):
+    """Return True if this student is currently enrolled; false otherwise"""
     # TODO
     pass
+
+def getSemesterID(semester_string):
+  """
+  Convert a semester string of the form "SEASON_YEAR" (e.g. "SPRING_2018") into
+  a numeric value
+  Works by left-shifting the year by 2 and adding a value for the season - fast,
+  preserves ordering; can easily get season by testing modulo the season (e.g.
+  if id % 4 == 1, season is Summer)
+  """
+  season, year_str = semester_string.strip().upper().split('_')
+  if season == 'SPRING':
+    season_id = 0
+  elif season == 'SUMMER':
+    season_id = 1
+  elif season == 'FALL':
+    season_id = 2
+  else: # Probably an error
+    season_id = 3
+  semester_id = (int(year_str) << 2) + season_id
+  return semester_id

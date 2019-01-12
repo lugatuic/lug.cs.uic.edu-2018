@@ -1,29 +1,11 @@
+"""API Routes for the Officer record type"""
+
 import re
 import json
 from flask import Blueprint, jsonify, request
-from .models import Officer, OfficersParams, Positions
+from .models import Officer, OfficersParams, Positions, getSemesterID
 
-blueprint = Blueprint('officers', __name__)
-
-def getSemesterID(semester_string):
-  """
-  Convert a semester string of the form "SEASON_YEAR" (e.g. "SPRING_2018") into
-  a numeric value
-  Works by left-shifting the year by 2 and adding a value for the season - fast,
-  preserves ordering; can easily get season by testing modulo the season (e.g.
-  if id % 4 == 1, season is Summer)
-  """
-  season, year_str = semester_string.strip().upper().split('_')
-  if season == 'SPRING':
-    season_id = 0
-  elif season == 'SUMMER':
-    season_id = 1
-  elif season == 'FALL':
-    season_id = 2
-  else: # Probably an error
-    season_id = 3
-  semester_id = (int(year_str) << 2) + season_id
-  return semester_id
+BP = Blueprint('officers', __name__)
 
 def getSemesterString(semester_id):
   """
@@ -39,7 +21,7 @@ def getSemesterString(semester_id):
     return "FALL_" + year
   return "UNKNOWN_" + year
 
-@blueprint.route('/api/officers', methods=['GET'])
+@BP.route('/api/officers', methods=['GET'])
 def getOfficers():
   """
   API function to retrieve officers
