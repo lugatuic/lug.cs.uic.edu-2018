@@ -54,7 +54,7 @@
 </template>
 
 <script>
-import { mockProjects } from '@/modules/mockData';
+import { mapState, mapActions } from 'vuex';
 import SearchCard from '@/components/Projects/SearchCard';
 
 export default {
@@ -63,7 +63,12 @@ export default {
   },
   computed: {
     // a master list of all projects
-    allProjects: () => mockProjects,
+    ...mapState('projects', {
+      allProjects: 'data',
+    }),
+  },
+  methods: {
+    ...mapActions('projects', ['updateData']),
   },
   data () {
     return {
@@ -72,11 +77,8 @@ export default {
       projects: [],
     };
   },
-  created () {
-    this.projects = this.allProjects.slice();
-  },
-  mounted () {
-    console.warn('using mock data for projects');
+  async mounted () {
+    await this.updateData();
   },
   watch: {
     activeProject (newValue) {
