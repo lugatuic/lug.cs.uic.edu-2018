@@ -34,13 +34,13 @@
   },
   {
     "name": "Arcade Cabinet Build",
-    "status": "active",
+    "status": "inActive",
     "description": "Build an arcade cabinet for use in the LUG offices",
     "smallImage": "",
     "largeImage": "",
     "wikiLink": "https://lug.cs.uic.edu/wiki/doku.php?id=arcadecabinet",
     "githubLink": "",
-    "startDate": "",
+    "startDate": "N/A",
     "projectLead": "Bennett Maciorowski"
   }
 ]
