@@ -12,7 +12,7 @@
 
 <script>
 import { mapState, mapActions } from 'vuex';
-import EventCard from '@/components/Home/EventCard';
+import EventCard from '@/components/Events/EventCard';
 import debounce from 'lodash/debounce';
 export default {
   components: {

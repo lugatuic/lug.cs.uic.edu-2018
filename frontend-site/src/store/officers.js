@@ -1,10 +1,10 @@
 import lugApi from '@/modules/LugApi';
 
-// TODO: decide to keep or drop; only needed for caching, but current implementation doesn't need it
 export default {
   namespaced: true,
   state: {
-    data: [],
+    // TODO: should we cache officer list, and if so, for how long or when should it refresh?
+    // data: [],
     useMockData: false,
   },
   mutations: {
@@ -19,6 +19,7 @@ export default {
     async updateData ({ commit, dispatch }, params) {
       const officers = await dispatch('getData', params);
       commit('setData', officers);
+      return officers;
     },
     getData ({ state }, params = {}) {
       return lugApi.getOfficers({

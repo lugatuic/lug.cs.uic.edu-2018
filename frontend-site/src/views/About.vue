@@ -13,10 +13,13 @@
           </v-card-text>
           <v-card-actions>
             <v-btn
-            href="https://github.com/lugatuic/lug-docs/blob/master/rfc0000-lug-constitution.md"
-            flat target="_blank"
-            rel="noopener">
+              href="https://github.com/lugatuic/lug-docs/blob/master/rfc0000-lug-constitution.md"
+              flat target="_blank"
+              rel="noopener">
               Constitution
+            </v-btn>
+            <v-btn flat to="/office-policy">
+              Office Policy
             </v-btn>
           </v-card-actions>
         </v-card>
@@ -79,8 +82,97 @@
     </v-layout>
     <v-layout>
       <v-flex>
-        listing of previous officers by semester goes here; potentially reuse officer listing component
+        <v-card>
+          <v-card-title primary-title>
+            <h1 class="title">Administration History</h1>
+          </v-card-title>
+          <v-divider/>
+          <v-card-text v-if="isLoading" class="text-xs-center">
+            <v-progress-circular indeterminate/>
+            <h1 class="subheading">Loading Officer Data...</h1>
+          </v-card-text>
+          <v-expansion-panel v-else id="administration-history-list">
+            <v-expansion-panel-content
+              v-for="semester in semesters"
+              :key="semester"
+              lazy>
+              <h1 class="title" slot="header" style="text-transform: capitalize;">{{ semester.replace(/_/g, ' ').toLowerCase() }}</h1>
+              <v-card-text>
+                <v-container fluid class="pa-0" grid-list-md>
+                  <officer-listing :inputOfficers="officersBySemester[semester]"/>
+                </v-container>
+              </v-card-text>
+            </v-expansion-panel-content>
+          </v-expansion-panel>
+        </v-card>
       </v-flex>
     </v-layout>
   </v-container>
 </template>
+
+<script>
+import { mapActions } from 'vuex';
+import {
+  positionOrder,
+  convertSemesterToMonthStart,
+  getNextSemester,
+} from '@/modules/officers';
+import OfficerListing from '@/components/Home/OfficerListing';
+
+export default {
+  components: {
+    OfficerListing,
+  },
+  data () {
+    return {
+      officersBySemester: {},
+      semesters: [],
+      isLoading: true,
+    };
+  },
+  methods: {
+    ...mapActions('officers', ['updateData']),
+    async initializeOfficerData () {
+      const officers = await this.updateData();
+
+      // sort by oldest to newest (by term_start)
+      const sortedOfficers = officers.slice()
+        .sort((a, b) => convertSemesterToMonthStart(a.term_start) - convertSemesterToMonthStart(b.term_start));
+
+      const startSemester = sortedOfficers[0].term_start;
+      const endSemester = getNextSemester(sortedOfficers[sortedOfficers.length - 1].term_start);
+
+      // iteratively go through each semester and filter officers by semester
+      for (let semester = startSemester; semester !== endSemester; semester = getNextSemester(semester)) {
+        const currentSemesterDate = convertSemesterToMonthStart(semester);
+
+        // get officers that serve by each term sorted by position
+        this.officersBySemester[semester] = sortedOfficers.filter(officer => {
+          const startTerm = convertSemesterToMonthStart(officer.term_start);
+          const endTerm = convertSemesterToMonthStart(officer.term_end);
+          return startTerm <= currentSemesterDate && endTerm >= currentSemesterDate;
+        })
+        .sort((a, b) => positionOrder.indexOf(a.position) - positionOrder.indexOf(b.position));
+        this.semesters.push(semester);
+      }
+
+      this.semesters.reverse(); // show newest first
+    },
+  },
+  async mounted () {
+    try {
+      await this.initializeOfficerData();
+    } catch (err) {
+      console.error(err);
+    } finally {
+      this.isLoading = false;
+    }
+  },
+};
+</script>
+
+<style lang="scss">
+#administration-history-list .officer-card {
+  background-color: var(--card-default-background-color--darken-1)!important;
+}
+</style>
