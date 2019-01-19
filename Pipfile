@@ -6,9 +6,15 @@ name = "pypi"
 [packages]
 flask = "*"
 flask-cors = "*"
+requests = "*"
+icalendar = "*"
 
 [requires]
 python_version = "3.7"
 
 [dev-packages]
 pylint = "*"
+rope = "*"
+
+[packages.python-language-server]
+extras = [ "all",]

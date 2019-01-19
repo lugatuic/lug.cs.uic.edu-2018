@@ -7,26 +7,43 @@ See http://flask.pocoo.org/docs/1.0/patterns/appfactories/ for more info
 
 from flask import Flask
 
-from backend_site import officers, posts
-from backend_site import views as static_views
 from backend_site.extensions import cors
 from backend_site.settings import ProdConfig
 
+from backend_site.events import blueprint as events_routes
+from backend_site.officers import blueprint as officers_routes
+from backend_site.posts import blueprint as posts_routes
+from .views import blueprint as static_views
+
+
 def createApp(config_object=ProdConfig):
-  print(__name__)
-  print(__name__.split('.')[0])
-  app = Flask(__name__.split('.')[0], static_folder=None, root_path=config_object.PROJECT_ROOT)
-  # app = Flask(__name__, static_folder=None)
-  app.config.from_object(config_object)
+    """
+    Factory method to create new Flask app from the modules in each subfolder
+    """
+    print(__name__)
+    print(__name__.split('.')[0])
+    app = Flask(__name__.split('.')[0],
+                static_folder=None,
+                root_path=config_object.PROJECT_ROOT)
+    app.config.from_object(config_object)
 
-  origins = app.config.get('CORS_ORIGIN_WHITELIST', '*')
-  cors.init_app(static_views.blueprint, origins=origins)
-  cors.init_app(officers.views.blueprint, origins=origins, url_prefix='/api/officers')
-  cors.init_app(posts.views.blueprint, origins=origins, url_prefix='/api/posts')
+    origins = app.config.get('CORS_ORIGIN_WHITELIST', '*')
+    cors.init_app(static_views,
+                  origins=origins,
+                  url_prefix='/')
+    cors.init_app(events_routes,
+                  origins=origins,
+                  url_prefix='/api/events')
+    cors.init_app(officers_routes,
+                  origins=origins,
+                  url_prefix='/api/officers')
+    cors.init_app(posts_routes,
+                  origins=origins,
+                  url_prefix='/api/posts')
 
-  app.register_blueprint(static_views.blueprint)
-  app.register_blueprint(officers.views.blueprint)
-  app.register_blueprint(posts.views.blueprint)
+    app.register_blueprint(static_views, url_prefix='/')
+    app.register_blueprint(events_routes, url_prefix='/api/events')
+    app.register_blueprint(officers_routes, url_prefix='/api/officers')
+    app.register_blueprint(posts_routes, url_prefix='/api/posts')
 
-  return app
-
+    return app
