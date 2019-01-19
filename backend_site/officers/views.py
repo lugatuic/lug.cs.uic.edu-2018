@@ -42,7 +42,7 @@ def getOfficers():
     """
     API function to retrieve officers
     Parameters:
-    /api/officers?position=[PRESIDENT,VICE_PRESIDENT,TREASURER]
+    /api/officers?position=[PRESIDENT,VICE_PRESIDENT,TREASURER,etc]
                ?semester=SEASON_YEAR
                   e.g. "?semester=SUMMER_2018
                   Overrides 'year'
