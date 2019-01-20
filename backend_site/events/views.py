@@ -1,3 +1,5 @@
+"""API routes for the Events record type"""
+
 from flask import Blueprint, jsonify
 from requests import HTTPError
 

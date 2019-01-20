@@ -7,10 +7,10 @@ blueprint = Blueprint('static', __name__,
                       static_folder=STATIC_DIR,
                       static_url_path=STATIC_ROUTE)
 
-print("Static blueprint root path:")
-print(blueprint.root_path)
-print("Static blueprint static directory:")
-print(blueprint.static_folder)
+# print("Static blueprint root path:")
+# print(blueprint.root_path)
+# print("Static blueprint static directory:")
+# print(blueprint.static_folder)
 
 
 @blueprint.route('/')
