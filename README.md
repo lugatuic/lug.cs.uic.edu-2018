@@ -4,7 +4,7 @@
 * Project Lead/Manager: Joshua Castor
 * Project BackEnd Lead: Will Toher
 * Project Deployment: Bharat Middha (LUG VP/SysAdmin)
-* Project FrontEnd Lead: Joshua Castor 
+* Project FrontEnd Lead: Joshua Castor
 
 # Requirements
 * Git
@@ -17,7 +17,7 @@
 # Deployment
 
 (TODO)
-  
+
 # Contributing
 
 We are using a version of the [Git Flow](https://nvie.com/posts/a-successful-git-branching-model/) style in this repository. This means that the `master` branch, the first branch you see when you load this page, is the last stable version of the website, and the `develop` branch incorporates more recent changes. Any changes you make should be done in *a new branch which derives from `develop`*.
@@ -127,7 +127,6 @@ Powershell (Windows):
 
 ```posh
 pipenv shell
-$env:FLASK_APP = 'server.py'
 $env:FLASK_ENV = 'development'
 flask run
 ```
@@ -135,7 +134,6 @@ flask run
 Bash (MacOS and Linux):
 ```bash
 pipenv shell
-export FLASK_APP=server.py
 export FLASK_ENV=development
 flask run
 ```
