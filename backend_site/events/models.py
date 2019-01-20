@@ -1,3 +1,5 @@
+"""Data models representing the Events record type"""
+
 from datetime import datetime, timedelta
 from icalendar import Calendar
 import requests  # using this to yank the ics file from google calendar
@@ -10,7 +12,9 @@ EVENTS_CACHED = datetime.now()
 
 
 def getCacheEvents():
-    global EV, EVENTS_CACHED
+    """
+    Return events from cache or internet as appropriate
+    """
     if (EV == []) or (datetime.now() - EVENTS_CACHED >= timedelta(hours=1)):
         cacheEvents()
     return EV
@@ -28,15 +32,16 @@ def convertEvent(comp):
         # TODO: What if the start or end time is missing?
         return {
             'summary':     comp.decoded('SUMMARY', default=b'UNKNOWN EVENT')
-                               .decode('UTF-8'),
+                           .decode('UTF-8'),
             'timeStart':   comp.decoded('DTSTART')
-                               .strftime(DTSTRFORMAT),
+                           .strftime(DTSTRFORMAT),
             'timeEnd':     endtime.strftime(DTSTRFORMAT),
             'location':    comp.decoded('LOCATION', default=b'')
-                               .decode('UTF-8'),
+                           .decode('UTF-8'),
             'description': comp.decoded('DESCRIPTION', default=b'')
-                               .decode('UTF-8')
+                           .decode('UTF-8')
         }
+    return None
 
 
 def cacheEvents():
@@ -47,6 +52,6 @@ def cacheEvents():
     cal_request.raise_for_status()  # Catch this exception in the view
 
     gcal = Calendar.from_ical(cal_request.content)
-    events = [convertEvent(x) for x in gcal.walk() if x.name == "VEVENT"]
-    EV = [x for x in events if x]  # TODO: figure out why above line spits out nulls
+    events = [convertEvent(x) for x in gcal.walk(name="VEVENT")]
+    EV = [x for x in events if x]
     EVENTS_CACHED = datetime.now()
