@@ -1,3 +1,5 @@
+"""Configuration settings for this project"""
+
 from os import path, pardir
 
 BACKEND_DIR = path.abspath(path.dirname(__file__))  # This directory
@@ -16,6 +18,10 @@ class Config:
     CORS_ORIGIN_WHITELIST = [
         'http://0.0.0.0:5000',
         'http://localhost:5000',
+        'https://0.0.0.0:5000',
+        'https://localhost:5000',
+        'http://lug.cs.uic.edu',
+        'https://lug.cs.uic.edu'
     ]
 
 
