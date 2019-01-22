@@ -12,6 +12,7 @@ from backend_site.settings import ProdConfig
 
 from backend_site.events import blueprint as events_routes
 from backend_site.officers import blueprint as officers_routes
+from backend_site.projects import blueprint as projects_routes
 from .views import blueprint as static_views
 
 
@@ -36,9 +37,13 @@ def createApp(config_object=ProdConfig):
     cors.init_app(officers_routes,
                   origins=origins,
                   url_prefix='/api/officers')
+    cors.init_app(projects_routes,
+                  origins=origins,
+                  url_prefix='/api/projects')
 
     app.register_blueprint(static_views, url_prefix='/')
     app.register_blueprint(events_routes, url_prefix='/api/events')
     app.register_blueprint(officers_routes, url_prefix='/api/officers')
+    app.register_blueprint(projects_routes, url_prefix='/api/projects')
 
     return app
