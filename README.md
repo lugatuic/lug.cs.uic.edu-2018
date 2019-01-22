@@ -128,6 +128,7 @@ Powershell (Windows):
 ```posh
 pipenv shell
 $env:FLASK_ENV = 'development'
+$env:FLASK_DEBUG = 1
 flask run
 ```
 
@@ -135,5 +136,6 @@ Bash (MacOS and Linux):
 ```bash
 pipenv shell
 export FLASK_ENV=development
+export FLASK_DEBUG=1
 flask run
 ```
