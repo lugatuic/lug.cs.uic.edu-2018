@@ -3,9 +3,11 @@
 import re
 import json
 from flask import Blueprint, jsonify, request
+from flask_cors import CORS
 from .models import Officer, OfficersParams, Positions, getSemesterID
 
 blueprint = Blueprint('officers', __name__)
+CORS(blueprint)
 
 
 def getSemesterString(semester_id):
@@ -37,7 +39,7 @@ def semesterIDType(reqstr):
     return None
 
 
-@blueprint.route('/', methods=['GET'])
+@blueprint.route('', methods=['GET'])
 def getOfficers():
     """
     API function to retrieve officers

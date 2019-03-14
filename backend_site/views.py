@@ -7,13 +7,15 @@ blueprint = Blueprint('static', __name__,
                       static_folder=STATIC_DIR,
                       static_url_path=STATIC_ROUTE)
 
-# print("Static blueprint root path:")
-# print(blueprint.root_path)
-# print("Static blueprint static directory:")
-# print(blueprint.static_folder)
+# No CORS on static routes!
+
+print("Static blueprint root path:")
+print(blueprint.root_path)
+print("Static blueprint static directory:")
+print(blueprint.static_folder)
 
 
-@blueprint.route('/')
+@blueprint.route('')
 def homePage():
     """Route for '/' - Home Page"""
     # print("Firing homepage route!")

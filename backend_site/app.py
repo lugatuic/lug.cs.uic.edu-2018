@@ -16,6 +16,16 @@ from backend_site.projects import blueprint as projects_routes
 from .views import blueprint as static_views
 
 
+# def corsInit(routes, origins):
+#     """Initialize CORS headers for all routes"""
+#     for (route, path) in routes:
+#         cors.init_app(route, origins=origins, url_prefix=path)
+
+def registerBlueprints(routes, app):
+    """Register blueprints to app for all routes"""
+    for (route, path) in routes:
+        app.register_blueprint(route, url_prefix=path)
+
 def createApp(config_object=ProdConfig):
     """
     Factory method to create new Flask app from the modules in each subfolder
@@ -27,23 +37,16 @@ def createApp(config_object=ProdConfig):
                 root_path=config_object.PROJECT_ROOT)
     app.config.from_object(config_object)
 
-    origins = app.config.get('CORS_ORIGIN_WHITELIST', '*')
-    cors.init_app(static_views,
-                  origins=origins,
-                  url_prefix='/')
-    cors.init_app(events_routes,
-                  origins=origins,
-                  url_prefix='/api/events')
-    cors.init_app(officers_routes,
-                  origins=origins,
-                  url_prefix='/api/officers')
-    cors.init_app(projects_routes,
-                  origins=origins,
-                  url_prefix='/api/projects')
+    # origins = app.config.get('CORS_ORIGIN_WHITELIST', '*')
 
-    app.register_blueprint(static_views, url_prefix='/')
-    app.register_blueprint(events_routes, url_prefix='/api/events')
-    app.register_blueprint(officers_routes, url_prefix='/api/officers')
-    app.register_blueprint(projects_routes, url_prefix='/api/projects')
+    routes = [
+        (static_views, '/'),
+        (events_routes, '/api/events'),
+        (officers_routes, '/api/officers'),
+        (projects_routes, '/api/projects')
+    ]
+
+    # corsInit(routes, origins)
+    registerBlueprints(routes, app)
 
     return app
