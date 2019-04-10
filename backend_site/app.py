@@ -37,7 +37,6 @@ def createApp(config_object=ProdConfig):
                 root_path=config_object.PROJECT_ROOT)
     app.config.from_object(config_object)
 
-    # origins = app.config.get('CORS_ORIGIN_WHITELIST', '*')
 
     routes = [
         (static_views, '/'),
@@ -46,7 +45,6 @@ def createApp(config_object=ProdConfig):
         (projects_routes, '/api/projects')
     ]
 
-    # corsInit(routes, origins)
     registerBlueprints(routes, app)
 
     return app

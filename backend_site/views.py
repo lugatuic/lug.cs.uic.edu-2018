@@ -18,16 +18,12 @@ print(blueprint.static_folder)
 @blueprint.route('')
 def homePage():
     """Route for '/' - Home Page"""
-    # print("Firing homepage route!")
-    # print(blueprint.root_path)
-    # print(blueprint.static_folder)
     return blueprint.send_static_file('index.html')
 
 
 @blueprint.route('/static/<path:req_path>')
 def sendStatic(req_path):
     """Route for all files under '/static/'"""
-    # print("Firing static route!")
     return blueprint.send_static_file(req_path)
 
 

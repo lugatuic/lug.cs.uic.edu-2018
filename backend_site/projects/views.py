@@ -1,6 +1,6 @@
 """API routes for the Projects record type"""
-
-from flask import Blueprint
+import json
+from flask import Blueprint,jsonify
 from flask_cors import CORS
 
 blueprint = Blueprint('projects', __name__)
@@ -11,4 +11,6 @@ CORS(blueprint)
 def getProjects():
     """Route to retrieve all LUG projects, past and present"""
     with open('projects.json') as projects_file:
-        return projects_file.read()
+        projects=projects_file.read()
+        projects=json.loads(projects)
+        return jsonify (projects)

@@ -10,6 +10,6 @@ if get_debug_flag():
 else:
     CONFIG = ProdConfig
     print("Using PROD config!")
-# CONFIG = DevConfig if get_debug_flag() else ProdConfig
+
 
 app = createApp(CONFIG)
