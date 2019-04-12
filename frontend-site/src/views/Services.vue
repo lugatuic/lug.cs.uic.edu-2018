@@ -1,7 +1,7 @@
 <template>
   <v-container grid-list-lg>
     <v-layout row wrap>
-      <v-flex xs12 sm6 md4 v-for="(service, i) in services" :key="i">
+      <v-flex xs12 sm6 v-for="(service, i) in services" :key="i">
         <v-card class="ma-2">
           <v-container fluid class="pa-0">
              <v-layout row align-center>
