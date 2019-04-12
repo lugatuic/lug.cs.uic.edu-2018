@@ -26,7 +26,7 @@ export default {
   },
   data () {
     return {
-      showNavDrawer: false,
+      showNavDrawer: true,
     };
   },
 };
