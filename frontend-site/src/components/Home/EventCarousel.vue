@@ -72,7 +72,6 @@ export default {
   },
   watch: {
     height (newValue) {
-      console.warn(newValue);
       this.$el.style.height = `${newValue}px`;
     },
     activeEvent () {
