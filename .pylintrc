@@ -256,7 +256,8 @@ good-names=i,
            ex,
            Run,
            _,
-           app
+           app,
+           blueprint
 
 # Include a hint for the correct naming format with invalid-name.
 include-naming-hint=no
@@ -314,13 +315,13 @@ ignore-long-lines=^\s*(# )?<?https?://\S+>?$
 # CUSTOMIZED
 # Number of spaces of indent required inside a hanging  or continued line.
 # indent-after-paren=4
-indent-after-paren=2
+indent-after-paren=4
 
 # CUSTOMIZED
 # String used as indentation unit. This is usually "    " (4 spaces) or "\t" (1
 # tab).
 # indent-string='    '
-indent-string='  '
+indent-string='    '
 
 # Maximum number of characters on a single line.
 max-line-length=100

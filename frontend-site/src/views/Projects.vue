@@ -17,7 +17,8 @@
         <v-card @click.native="activeProject = project" class="project-card">
           <!-- would put v-img or other image element here -->
           <v-container style="border: 1px solid white;">
-            {{ project.smallImage }}
+
+              <v-img :src="project.smallImage"></v-img>
           </v-container>
           <v-card-title primary-title>
             <h1 class="headline">{{ project.name }}</h1>
@@ -34,7 +35,8 @@
           <v-container fluid>
             <v-layout row wrap>
               <v-flex xs12 md7>
-                {{ activeProject.largeImage }}
+                <v-img :src="activeProject.largeImage"></v-img>
+
               </v-flex>
               <v-flex xs12 md5>
                 <h1 class="title">{{ activeProject.name }}</h1>
@@ -107,5 +109,3 @@ export default {
   }
 }
 </style>
-
-

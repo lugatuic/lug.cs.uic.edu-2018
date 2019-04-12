@@ -1,4 +1,4 @@
-export const statusFilterValues = Object.freeze(['complete', 'incomplete', 'abandoned']);
+export const statusFilterValues = Object.freeze(['complete', 'active', 'inactive']);
 
 export const wikiLinkFilterValues = Object.freeze(['Has Wiki Link', 'Does Not Have Wiki Link']);
 

@@ -5,7 +5,7 @@ export default {
   state: {
     data: [],
     // TODO: remove mock parameter once backend has API ready
-    useMockData: true,
+    useMockData: false,
   },
   mutations: {
     setData (state, data) {
