@@ -93,8 +93,11 @@ export default {
     }
   },
   methods: {
-    emitValue (newValue) {
-      this.$emit('input', newValue);
+    emitValue (newValue, forceSend = false) {
+      // only send if nav drawer can be toggled by default; otherwise breaks on large displays
+      if (this.$vuetify.breakpoint.mdAndDown || forceSend) {
+        this.$emit('input', newValue);
+      }
     },
   },
 };
