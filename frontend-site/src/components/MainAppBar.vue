@@ -5,10 +5,10 @@
     <v-toolbar-side-icon v-if="$vuetify.breakpoint.mdAndDown" @click="$emit('sidemenu-button-click')"/>
     <v-toolbar-title v-text="title"/>
     <v-spacer/>
-    <v-btn flat outline>
+    <!-- <v-btn flat outline>
       <v-icon class="mr-1">person_add</v-icon>
       <span>Sign Up</span>
-    </v-btn>
+    </v-btn> -->
     <v-btn icon href="https://lugatuic.slack.com/messages" target="_blank" rel="noopener">
       <v-icon>fab fa-slack</v-icon>
     </v-btn>
