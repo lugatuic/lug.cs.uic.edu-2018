@@ -14,11 +14,10 @@
         :key="i"
         xs12 md6 lg3>
         <!-- TODO: refactor into separate component -->
-        <v-card @click.native="activeProject = project" class="project-card">
-          <!-- would put v-img or other image element here -->
-          <v-container style="border: 1px solid white;">
-
-              <v-img :src="project.smallImage"></v-img>
+        <v-card @click.native="activeProject = project" class="project-card" :dark="!useLightTheme">
+          <!-- only show image if it exists -->
+          <v-container v-if="project.smallImage" style="border: 1px solid lightslategrey;">
+            <v-img :src="project.smallImage"></v-img>
           </v-container>
           <v-card-title primary-title>
             <h1 class="headline">{{ project.name }}</h1>
@@ -30,7 +29,7 @@
       </v-flex>
     </v-layout>
     <v-dialog v-model="showModal">
-      <v-card v-if="activeProject">
+      <v-card v-if="activeProject" :dark="!useLightTheme">
         <v-card-text>
           <v-container fluid>
             <v-layout row wrap>
@@ -68,6 +67,7 @@ export default {
     ...mapState('projects', {
       allProjects: 'data',
     }),
+    ...mapState(['useLightTheme']),
   },
   methods: {
     ...mapActions('projects', ['updateData']),
@@ -104,6 +104,12 @@ export default {
 <style lang="scss">
 .project-card {
   cursor: pointer;
+
+  &:hover {
+    border: 1px solid lightslategrey;
+    margin: -1px;
+  }
+
   & > * {
     pointer-events: none;
   }

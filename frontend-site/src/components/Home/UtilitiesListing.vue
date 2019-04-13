@@ -28,7 +28,11 @@ export default {
 </script>
 
 <style lang="scss">
-.utility-listing .utility-card {
-  min-height: 100px;
+.utility-listing {
+  justify-content: center;
+
+  .utility-card {
+    min-height: 100px;
+  }
 }
 </style>

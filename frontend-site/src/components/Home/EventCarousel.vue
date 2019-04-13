@@ -3,6 +3,7 @@
     class="event-carousel"
     v-model="activeEvent"
     hide-delimiters
+    :interval="5000"
     :light="useLightTheme">
     <v-carousel-item v-for="(event, i) in events" :key="i">
       <event-card :event="event" :flat="true"/>
@@ -23,12 +24,14 @@ export default {
     ...mapState('events', {
       events: 'data',
     }),
+    defaultCardHeight: () => 100,
   },
   data () {
     return {
       activeEvent: -1,
-      height: 50,
-      onAnimationEndHandler: null,
+      height: 100,
+      debouncedUpdateHeight: null,
+      cardHeights: new Map(),
     };
   },
   methods: {
@@ -43,8 +46,13 @@ export default {
       if (activeElement) {
         // compare active height to stored height and update accordingly
         const activeCard = activeElement.querySelector('.event-card');
-        const newHeight = Math.max(this.height, activeCard.offsetHeight);
-        if (newHeight > this.height) {
+
+        // only set card height for valid events
+        if (this.events[this.activeEvent]) {
+          this.cardHeights.set(this.events[this.activeEvent], activeCard.offsetHeight);
+        }
+        const newHeight = Math.max(this.defaultCardHeight, ...Array.from(this.cardHeights.values()));
+        if (newHeight !== this.height) {
           this.height = newHeight;
         }
 
@@ -59,25 +67,15 @@ export default {
     await this.updateData();
     this.activeEvent = 0;
 
-    // shared instance for EH removal in beforeDestroy
     // debounced in case multiple EH fire simultaneously
-    this.onAnimationEndHandler = debounce(() => this.updateHeight(), 50);
-
-    // add event handler for after transitions finish to ensure only one card is visible when updating height
-    Array.from(this.$el.querySelectorAll('.v-carousel__item')).forEach(item => {
-      item.addEventListener('transitionend', this.onAnimationEndHandler);
-      item.addEventListener('webkitTransitionEnd', this.onAnimationEndHandler);
-    });
-  },
-  beforeDestroy () {
-    Array.from(this.$el.querySelectorAll('.v-carousel__item')).forEach(item => {
-      item.removeEventListener('transitionend', this.onAnimationEndHandler);
-      item.removeEventListener('webkitTransitionEnd', this.onAnimationEndHandler);
-    });
+    this.debouncedUpdateHeight = debounce(() => this.updateHeight(), 1000);
   },
   watch: {
     height (newValue) {
       this.$el.style.height = `${newValue}px`;
+    },
+    activeEvent () {
+      this.debouncedUpdateHeight();
     },
   },
 };
@@ -87,5 +85,6 @@ export default {
 .event-carousel {
   background-color: var(--card-default-background-color);
   height: 150px; // default
+  transition: height 0.5s;
 }
 </style>
