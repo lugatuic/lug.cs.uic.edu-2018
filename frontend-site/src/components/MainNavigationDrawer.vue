@@ -85,6 +85,7 @@ export default {
       },
     ],
   },
+
   async mounted () {
     // hide on load if nav drawer can be toggled
     if (this.$vuetify.breakpoint.mdAndDown) {
@@ -100,6 +101,7 @@ export default {
       }
     },
   },
+
 };
 </script>
 

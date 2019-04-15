@@ -66,10 +66,5 @@ export const servicesOffered = Object.freeze([
     description: 'If you\'re feeling nostalgic, you can try out the SEGA or the various other retro gaming systems found in the LUG office.',
     url: '',
   },
-  {
-    name: 'Ice Cream',
-    image: require("@/assets/Icecream.jpg"),
-    description: 'Ice cream, being an important part of a student\'s diet, is available in the LUG office for a mandatory donation.',
-    url: '',
-  },
+
 ])
