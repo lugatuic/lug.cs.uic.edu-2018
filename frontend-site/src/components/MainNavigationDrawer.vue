@@ -3,7 +3,7 @@
     persistent
     :width="200"
     :value="value"
-    @input="$emit('input', $event)"
+    @input="emitValue($event)"
     enable-resize-watcher
     fixed app>
     <v-container fluid class="pl-0 pr-0 pt-0">
@@ -18,7 +18,7 @@
           <!-- list of site links -->
           <v-list>
             <template v-for="(item, i) in pages">
-              <v-list-tile v-if="item.to || item.href" :key="i" :to="item.to" :href="item.href">
+              <v-list-tile v-if="item.to || item.href" :key="i" :to="item.to" :href="item.href" @click="emitValue(false)">
                 <v-list-tile-content>
                   <v-list-tile-title>{{ item.name }}</v-list-tile-title>
                 </v-list-tile-content>
@@ -85,6 +85,24 @@ export default {
       },
     ],
   },
+<<<<<<< HEAD
+=======
+  async mounted () {
+    // hide on load if nav drawer can be toggled
+    if (this.$vuetify.breakpoint.mdAndDown) {
+      await this.$nextTick();
+      this.emitValue(false);
+    }
+  },
+  methods: {
+    emitValue (newValue, forceSend = false) {
+      // only send if nav drawer can be toggled by default; otherwise breaks on large displays
+      if (this.$vuetify.breakpoint.mdAndDown || forceSend) {
+        this.$emit('input', newValue);
+      }
+    },
+  },
+>>>>>>> a1bc11c57c55a584613528b3aef2e940e8c41ab6
 };
 </script>
 
