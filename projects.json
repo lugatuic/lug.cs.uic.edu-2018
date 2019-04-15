@@ -1,0 +1,46 @@
+[
+  {
+    "name": "LUG Website 2018-2019 Redesign",
+    "status": "complete",
+    "description": "Redesign of the LUG Website for the modern era, and updated needs from it. ",
+    "smallImage": "https://lug.cs.uic.edu/wiki/lib/exe/fetch.php?media=20181204_145526.jpg",
+    "largeImage": "https://lug.cs.uic.edu/wiki/lib/exe/fetch.php?media=20181204_145526.jpg",
+    "wikiLink": "https://lug.cs.uic.edu/wiki/doku.php?id=webredesign2018",
+    "githubLink": "https://github.com/lugatuic/lug.cs.uic.edu-2018",
+    "startDate": "2018-09-12",
+    "projectLead": "Joshua Castor"
+  },
+  {
+    "name": "Laser Tag System",
+    "status": "active",
+    "description": "Design and build a lasertag system ",
+    "smallImage": "",
+    "largeImage": "",
+    "wikiLink": "https://lug.cs.uic.edu/wiki/doku.php?id=lasertagsystem",
+    "githubLink": "",
+    "startDate": "2018-10-22",
+    "projectLead": "Zhongyi Chen"
+  },
+  {
+    "name": "D&D Web App",
+    "status": "inactive",
+    "description": "Design and build a web application to allow people to create characters for D&D as well as play a game with friends",
+    "smallImage": "",
+    "largeImage": "",
+    "wikiLink": "https://lug.cs.uic.edu/wiki/doku.php?id=dndwebapp",
+    "githubLink": "https://github.com/lugatuic/LUG_Dungeons_and_Dragons_Webbapp",
+    "startDate": "2018-11-09",
+    "projectLead": "Misha Ryabko"
+  },
+  {
+    "name": "Arcade Cabinet Build",
+    "status": "active",
+    "description": "Build an arcade cabinet for use in the LUG offices",
+    "smallImage": "",
+    "largeImage": "",
+    "wikiLink": "https://lug.cs.uic.edu/wiki/doku.php?id=arcadecabinet",
+    "githubLink": "",
+    "startDate": "N/A",
+    "projectLead": "Brent Yurek"
+  }
+]
