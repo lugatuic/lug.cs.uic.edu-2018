@@ -1,16 +1,43 @@
 [{
-      "name": "Joey Voorhees",
+      "name": "Cody Hasty",
       "position": "PRESIDENT",
-      "description": "Challenge me to Tetris, I dare you",
+      "description": "Linux",
+      "github": "",
+      "slack": "cody",
+      "personal_site": "",
+      "image": "",
+      "special_ability": "Memes",
+      "join_date": "",
+      "term_start": "SUMMER_2020",
+      "term_end": "SPRING_2021",
+      "graduating_semester": "SPRING_2022"
+    },{
+      "name": "Osa",
+      "position": "VICE_PRESIDENT",
+      "description": "Omae wa mo SHINDERU",
+      "github": "",
+      "slack": "Double O",
+      "personal_site": "",
+      "image": "",
+      "special_ability": "WEEB",
+      "join_date": "",
+      "term_start": "SUMMER_2020",
+      "term_end": "SPRING_2022",
+      "graduating_semester": ""
+    },
+    {
+      "name": "Krish",
+      "position": "TREASURER",
+      "description": "Holla Dolla Bill yo",
       "github": "",
       "slack": "apollo",
       "personal_site": "",
       "image": "",
       "special_ability": "Memes",
       "join_date": "",
-      "term_start": "SUMMER_2019",
-      "term_end": "SPRING_2020",
-      "graduating_semester": "SPRING_2021"
+      "term_start": "SUMMER_2020",
+      "term_end": "SPRING_2021",
+      "graduating_semester": "SPRING_2023"
     },
     {
       "name": "Jacob Raffe",
