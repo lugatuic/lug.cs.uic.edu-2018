@@ -17,6 +17,7 @@
 # Deployment
 
 (TODO)
+Current thoughts are to run back end and front end from 2 different docker containers 
 
 # Contributing
 
